@@ -14,10 +14,10 @@ function init(){
 
 	let porte5 = document.getElementById("porte5")
 	porte5.style.left = "10px"
-	porte5.style.top = "500px"
+	porte5.style.top = "460px"
 	let porte6 = document.getElementById("porte6")
 	porte6.style.left = "31px"
-	porte6.style.top = "530px"
+	porte6.style.top = "490px"
 	let piou = document.getElementById("piou")
 	piou.style.left = "1340px"
 	piou.style.top = "300px"
@@ -31,23 +31,23 @@ function init(){
 	crumb3.style.left = "200px"
 	crumb3.style.top = "850px"
 	let crumb4 = document.getElementById("crumb4")
-	crumb4.style.left = "1700px"
-	crumb4.style.top = "800px"
+	crumb4.style.left = "1500px"
+	crumb4.style.top = "850px"
 	let gasinière = document.getElementById("gasinière")
 	gasinière.style.left = "90px"
-	gasinière.style.top = "277px"
+	gasinière.style.top = "280px"
 	let frigo = document.getElementById("frigo")
 	frigo.style.left = "700px"
-	frigo.style.top = "563px"
+	frigo.style.top = "523px"
 	let table = document.getElementById("table")
 	table.style.left = "280px"
-	table.style.top = "740px"
+	table.style.top = "700px"
 	let poubelle = document.getElementById("poubelle")
 	poubelle.style.left = "1080px"
-	poubelle.style.top = "869px"
+	poubelle.style.top = "829px"
 	let evier = document.getElementById("evier")
-	evier.style.left = "1500px"
-	evier.style.top = "657px"
+	evier.style.left = "1300px"
+	evier.style.top = "617px"
 	let Mur = document.getElementById("Mur")
 	Mur.style.left = "1865px"
 	Mur.style.top = "300px"
@@ -194,7 +194,7 @@ function animate() {
             }
 
             BDF.style.top = BDFS.position + "px";
-            BDF.style.left = '1700px'
+            BDF.style.left = '1500px'
         } 
     
 
