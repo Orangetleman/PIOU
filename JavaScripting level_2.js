@@ -7,6 +7,7 @@ let Speed = 5
 let positionX = 60
 let positionY = 500
 let schroum = new Audio("schroum.m4a")
+let dim_piou = { width: 536/5, height: 305/5 };
 
 function init(){
 
@@ -192,27 +193,33 @@ function manageIntersect(direction) {
 }
 
 document.addEventListener("keydown", (event) => {
-	if (event.key === "ArrowLeft") {
-		MovingL = true
-		piou.src = "piou haut gauche.png"
-	}
-	if (event.key === "ArrowRight") {
-		MovingR = true
-		piou.src = "piou haut droit.png"
-	}
-	if (event.key === "ArrowUp") {
-		MovingU = true
-		piou.src = "piou haut nord.png"
-	}
-	if (event.key === "ArrowDown") {
-		MovingD = true
-		piou.src = "piou haut sud.png"
-	}
-	if (event.key === "Shift") {
-		Speed = 10
-	}
-  }
-)
+    const piou = document.getElementById("piou");
+
+    if (event.key === "ArrowLeft") {
+        MovingL = true;
+        piou.src = "piou haut gauche.png";
+        setPiouDimensions(piou, "horizontal");
+    }
+    if (event.key === "ArrowRight") {
+        MovingR = true;
+        piou.src = "piou haut droit.png";
+        setPiouDimensions(piou, "horizontal");
+    }
+    if (event.key === "ArrowUp") {
+        MovingU = true;
+        piou.src = "piou haut nord.png";
+        setPiouDimensions(piou, "vertical");
+    }
+    if (event.key === "ArrowDown") {
+        MovingD = true;
+        piou.src = "piou haut sud.png";
+        setPiouDimensions(piou, "vertical");
+    }
+    if (event.key === "Shift") {
+        Speed = 10;
+    }
+});
+
 document.addEventListener("keyup", (event) => {
 	if (event.key === "ArrowLeft") {
 		MovingL = false
@@ -231,6 +238,16 @@ document.addEventListener("keyup", (event) => {
 	}
   }
 )
+
+function setPiouDimensions(piou, orientation) {
+    if (orientation === "vertical") {
+        piou.style.width = `${dim_piou.height}px`; // Largeur pour l'orientation verticale
+        piou.style.height = `${dim_piou.width}px`; // Hauteur pour l'orientation verticale
+    } else if (orientation === "horizontal") {
+        piou.style.width = `${dim_piou.width}px`; // Largeur pour l'orientation horizontale
+        piou.style.height = `${dim_piou.height}px`; // Hauteur pour l'orientation horizontale
+    }
+}
 
 document.getElementById("counter").textContent = "Crumbs eaten : " + getCounter();
 

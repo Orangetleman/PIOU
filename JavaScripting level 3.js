@@ -8,6 +8,7 @@ let positionY = 300
 let schroum = new Audio("schroum.m4a")
 let Triche = 0;
 let currentCount = getCounter();
+let dim_piou = { width: 536/5, height: 305/5 };
 
 function init(){
 
@@ -233,22 +234,22 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") {
         MovingL = true;
         piou.src = "piou haut gauche.png";
-        updateHitbox(piou);
+        setPiouDimensions(piou, "horizontal");
     }
     if (event.key === "ArrowRight") {
         MovingR = true;
         piou.src = "piou haut droit.png";
-        updateHitbox(piou);
+        setPiouDimensions(piou, "horizontal");
     }
     if (event.key === "ArrowUp") {
         MovingU = true;
         piou.src = "piou haut nord.png";
-        updateHitbox(piou);
+        setPiouDimensions(piou, "vertical");
     }
     if (event.key === "ArrowDown") {
         MovingD = true;
         piou.src = "piou haut sud.png";
-        updateHitbox(piou);
+        setPiouDimensions(piou, "vertical");
     }
     if (event.key === "Shift") {
         Speed = 10;
@@ -274,10 +275,14 @@ document.addEventListener("keyup", (event) => {
   }
 )
 
-function updateHitbox(piou) {
-    const rect = piou.getBoundingClientRect();
-    piou.style.width = `${rect.width}px`;
-    piou.style.height = `${rect.height}px`;
+function setPiouDimensions(piou, orientation) {
+    if (orientation === "vertical") {
+        piou.style.width = `${dim_piou.height}px`; // Largeur pour l'orientation verticale
+        piou.style.height = `${dim_piou.width}px`; // Hauteur pour l'orientation verticale
+    } else if (orientation === "horizontal") {
+        piou.style.width = `${dim_piou.width}px`; // Largeur pour l'orientation horizontale
+        piou.style.height = `${dim_piou.height}px`; // Hauteur pour l'orientation horizontale
+    }
 }
 
 document.getElementById("counter").textContent = "Crumbs eaten : " + getCounter();
