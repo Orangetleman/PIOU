@@ -52,7 +52,12 @@ function init(){
 	let machinewashin = document.getElementById("machinewashin")
     machinewashin.style.left = "890px"
     machinewashin.style.top = "280px"
-
+	let Mur = document.getElementById("Mur")
+	Mur.style.left = "1865px"
+	Mur.style.top = "300px"
+	let Mur2 = document.getElementById("Mur2")
+	Mur2.style.left = "10px"
+	Mur2.style.top = "920px"
 }
 
 

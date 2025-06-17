@@ -47,6 +47,12 @@ function init(){
 	let evier = document.getElementById("evier")
 	evier.style.left = "1500px"
 	evier.style.top = "657px"
+	let Mur = document.getElementById("Mur")
+	Mur.style.left = "1865px"
+	Mur.style.top = "300px"
+	let Mur2 = document.getElementById("Mur2")
+	Mur2.style.left = "10px"
+	Mur2.style.top = "920px"
 }
 
 function update() {
@@ -227,34 +233,30 @@ function manageIntersect(direction) {
 	return false;
 }
 
+/*===============================================================*/
+
 document.addEventListener("keydown", (event) => {
-    const piou = document.getElementById("piou");
-
-    if (event.key === "ArrowLeft") {
-        MovingL = true;
-        piou.src = "piou haut gauche.png";
-        updateHitbox(piou);
-    }
-    if (event.key === "ArrowRight") {
-        MovingR = true;
-        piou.src = "piou haut droit.png";
-        updateHitbox(piou);
-    }
-    if (event.key === "ArrowUp") {
-        MovingU = true;
-        piou.src = "piou haut nord.png";
-        updateHitbox(piou);
-    }
-    if (event.key === "ArrowDown") {
-        MovingD = true;
-        piou.src = "piou haut sud.png";
-        updateHitbox(piou);
-    }
-    if (event.key === "Shift") {
-        Speed = 10;
-    }
-});
-
+	if (event.key === "ArrowLeft") {
+		MovingL = true
+		piou.src = "piou haut gauche.png"
+	}
+	if (event.key === "ArrowRight") {
+		MovingR = true
+		piou.src = "piou haut droit.png"
+	}
+	if (event.key === "ArrowUp") {
+		MovingU = true
+		piou.src = "piou haut nord.png"
+	}
+	if (event.key === "ArrowDown") {
+		MovingD = true
+		piou.src = "piou haut sud.png"
+	}
+	if (event.key === "Shift") {
+		Speed = 10
+	}
+  }
+)
 document.addEventListener("keyup", (event) => {
 	if (event.key === "ArrowLeft") {
 		MovingL = false
@@ -274,12 +276,6 @@ document.addEventListener("keyup", (event) => {
   }
 )
 
-function updateHitbox(piou) {
-    const rect = piou.getBoundingClientRect();
-    piou.style.width = `${rect.width}px`;
-    piou.style.height = `${rect.height}px`;
-}
-
 document.getElementById("counter").textContent = "Crumbs eaten : " + getCounter();
 
 function removeImage(img) {
@@ -297,8 +293,7 @@ function isIntersecting(rect1, rect2) {
 function Home() {
     location.replace("Home.html")
 }
-function Level_1_button(nextpage) {
-    localStorage.removeItem("counter");
+function Level_1() {
     const overlay = document.getElementById("videoOverlay");
     const video = document.getElementById("OpeningVideo");
 
@@ -306,7 +301,7 @@ function Level_1_button(nextpage) {
     video.play();
 
     video.onended = () => {
-        location.replace(nextpage);
+        location.replace("Level 1.html");
     };
 }
 function Level_2() {
