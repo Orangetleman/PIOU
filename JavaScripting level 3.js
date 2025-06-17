@@ -417,6 +417,12 @@ function finishGame() {
             }, 100);
         };
     } else {
-        location.replace("Credits.html");
+		alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
+        localStorage.removeItem("counter");
+        stopTimerHandler();
+		console.log("Video already played, redirecting to Credits.");
+        setTimeout(() => {
+			location.replace("Credits.html");
+		}, 100);
     }
 }
