@@ -228,27 +228,33 @@ function manageIntersect(direction) {
 }
 
 document.addEventListener("keydown", (event) => {
-	if (event.key === "ArrowLeft") {
-		MovingL = true
-		piou.src = "piou haut gauche.png"
-	}
-	if (event.key === "ArrowRight") {
-		MovingR = true
-		piou.src = "piou haut droit.png"
-	}
-	if (event.key === "ArrowUp") {
-		MovingU = true
-		piou.src = "piou haut nord.png"
-	}
-	if (event.key === "ArrowDown") {
-		MovingD = true
-		piou.src = "piou haut sud.png"
-	}
-	if (event.key === "Shift") {
-		Speed = 10
-	}
-  }
-)
+    const piou = document.getElementById("piou");
+
+    if (event.key === "ArrowLeft") {
+        MovingL = true;
+        piou.src = "piou haut gauche.png";
+        updateHitbox(piou);
+    }
+    if (event.key === "ArrowRight") {
+        MovingR = true;
+        piou.src = "piou haut droit.png";
+        updateHitbox(piou);
+    }
+    if (event.key === "ArrowUp") {
+        MovingU = true;
+        piou.src = "piou haut nord.png";
+        updateHitbox(piou);
+    }
+    if (event.key === "ArrowDown") {
+        MovingD = true;
+        piou.src = "piou haut sud.png";
+        updateHitbox(piou);
+    }
+    if (event.key === "Shift") {
+        Speed = 10;
+    }
+});
+
 document.addEventListener("keyup", (event) => {
 	if (event.key === "ArrowLeft") {
 		MovingL = false
@@ -267,6 +273,12 @@ document.addEventListener("keyup", (event) => {
 	}
   }
 )
+
+function updateHitbox(piou) {
+    const rect = piou.getBoundingClientRect();
+    piou.style.width = `${rect.width}px`;
+    piou.style.height = `${rect.height}px`;
+}
 
 document.getElementById("counter").textContent = "Crumbs eaten : " + getCounter();
 
