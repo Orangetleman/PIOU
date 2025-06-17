@@ -249,7 +249,8 @@ function isIntersecting(rect1, rect2) {
 function Home() {
     location.replace("Home.html")
 }
-function Level_1() {
+function Level_1_button(nextpage) {
+    localStorage.removeItem("counter");
     const overlay = document.getElementById("videoOverlay");
     const video = document.getElementById("OpeningVideo");
 
@@ -257,7 +258,7 @@ function Level_1() {
     video.play();
 
     video.onended = () => {
-        location.replace("Level 1.html");
+        location.replace(nextpage);
     };
 }
 function Level_2() {

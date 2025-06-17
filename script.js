@@ -38,14 +38,22 @@ function Home() {
 function Level_1() {
     const overlay = document.getElementById("videoOverlay");
     const video = document.getElementById("OpeningVideo");
+    const videoPlayed = localStorage.getItem("videoPlayed") === "true";
 
-    overlay.style.display = "block";
-    video.play();
-
-    video.onended = () => {
+    if (!videoPlayed) {
+        console.log("Video not played yet, showing overlay and playing video.");
+        overlay.style.display = "block";
+        video.play();
+        video.onended = () => {
+            localStorage.setItem("videoPlayed", "true");
+            location.replace("Level 1.html");
+        };
+    } else {
+        console.log("Video already played, redirecting to Level 1.");
         location.replace("Level 1.html");
-    };
+    }
 }
+
 function Level_2() {
     location.replace("Level 2.html")
 }
