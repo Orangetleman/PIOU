@@ -4,10 +4,10 @@ NOTRE AMOUREUX, NOTRE AMOURE DE NOTRE VIE, NOTRE RAISON DE VIVRE
 
 MAJ 1.1 :
     Bugs & améliorations :
-        - Crumb périmé + périmé     DONE
-        - Murs
-        - Dimensions Piou
-        - 1 seule fois les cinématiques
+        - Crumb périmé + périmé                                                                         DONE
+        - Murs                                                                                          DONE
+        - Dimensions Piou                                                                               AGRANDIR PIOU
+        - 1 seule fois les cinématiques                                                                 BUG ENDING?
     Nouveau lvl :
         - Bonus level boutton (qui s'affiche dans la barre du haut à la fin)
         - layout des murs
