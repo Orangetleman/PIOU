@@ -284,13 +284,39 @@ document.addEventListener("keyup", (event) => {
 )
 
 function setPiouDimensions(piou, orientation) {
+    // Sauvegarder les dimensions actuelles
+    const currentWidth = piou.offsetWidth;
+    const currentHeight = piou.offsetHeight;
+
+    // Définir les nouvelles dimensions en fonction de l'orientation
+    let newWidth, newHeight;
     if (orientation === "vertical") {
-        piou.style.width = `${dim_piou.height}px`; // Largeur pour l'orientation verticale
-        piou.style.height = `${dim_piou.width}px`; // Hauteur pour l'orientation verticale
+        newWidth = dim_piou.height; // Largeur pour l'orientation verticale
+        newHeight = dim_piou.width; // Hauteur pour l'orientation verticale
     } else if (orientation === "horizontal") {
-        piou.style.width = `${dim_piou.width}px`; // Largeur pour l'orientation horizontale
-        piou.style.height = `${dim_piou.height}px`; // Hauteur pour l'orientation horizontale
+        newWidth = dim_piou.width; // Largeur pour l'orientation horizontale
+        newHeight = dim_piou.height; // Hauteur pour l'orientation horizontale
     }
+
+    // Appliquer temporairement les nouvelles dimensions pour tester les collisions
+    piou.style.width = `${newWidth}px`;
+    piou.style.height = `${newHeight}px`;
+
+    // Vérifier si le personnage entre en collision avec un obstacle
+    const piouDim = piou.getBoundingClientRect();
+    for (const obstacle of document.querySelectorAll('img.image')) {
+        const obstacleDim = obstacle.getBoundingClientRect();
+        if (isIntersecting(piouDim, obstacleDim)) {
+            // Collision détectée, annuler le changement de dimensions
+            piou.style.width = `${currentWidth}px`;
+            piou.style.height = `${currentHeight}px`;
+            console.log("Collision détectée, dimensions annulées.");
+            return;
+        }
+    }
+
+    // Si aucune collision, conserver les nouvelles dimensions
+    console.log("Dimensions changées avec succès.");
 }
 
 document.getElementById("counter").textContent = "Crumbs eaten : " + getCounter();
