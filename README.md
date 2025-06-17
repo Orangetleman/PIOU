@@ -7,6 +7,7 @@ MAJ 1.1 :
         - Crumb périmé + périmé     DONE
         - Murs
         - Dimensions Piou
+        - 1 seule fois les cinématiques
     Nouveau lvl :
         - Bonus level boutton (qui s'affiche dans la barre du haut à la fin)
         - layout des murs

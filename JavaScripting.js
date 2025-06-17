@@ -12,10 +12,10 @@ let schroum = new Audio("schroum.m4a")
 function init(){
 
 	let porte1 = document.getElementById("porte1")
-	porte1.style.left = "1899px"
+	porte1.style.left = "1845px"
 	porte1.style.top = "500px"
 	let porte2 = document.getElementById("porte2")
-	porte2.style.left = "1782px"
+	porte2.style.left = "1728px"
 	porte2.style.top = "530px"
 	let piou = document.getElementById("piou")
 	piou.style.left = "60px"
@@ -53,6 +53,9 @@ function init(){
 	let commode2 = document.getElementById("commode2")
 	commode2.style.left = "900px"
 	commode2.style.top = "600px"
+	let Mur = document.getElementById("Mur")
+	Mur.style.left = "1850px"
+	Mur.style.top = "300px"
 }
 
 function update() {
