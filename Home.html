@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title class=>Home</title>
+		<link rel="icon" type="image/x-icon" href="piou piou gauche.png"/>
+		<link rel="stylesheet" href="CssFDG.css"/>
+		<link rel="stylesheet" href="style_level_map.css"/>
+		<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+	</head>
+	<body.centre>
+		<div class="flex-container" id="menu">
+			<button class="navigation_button" type="button" onclick="Credits();play_1()"> Credits </button>
+			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
+		</div>
+		<div class="flex-container" id="lvl1">
+			<div style="font-size : 5em; color : yellow">Home</div>
+		</div>
+		<div id="conteneur">
+		<center>
+		<h1 class="black"><u>Trois niveaux, trois difficultées</u></h1>
+		<p class="black" style="font-size:25px"> Levels</p>
+		<button class="level_button" name="level 1" id="Level_1" onclick="Level_1_button('Level 1.html');play_1()">Level 1</button>
+		<button class="level_button" name="level 2" id="Level_2" onclick="Level_2_button();play_1()">Level 2</button>
+		<button class="level_button" name="level 3" id="Level_3" onclick="Level_3_button();play_1()">Level 3</button>
+		<h2 class="black"><u>Fonctionnement du jeu :</u></h2>
+		<p>Le but du jeu est de récolter toute les miettes de pain, 
+			ressemblant à du papier en boule mais avec une couleur pain ':). 
+			Vous devrez faire cela en ayant pour obstacle différents élements du mobilier.
+			Attention aux pièges et aux méchants!</p>
+		<h2 class="black"><u>Aide/contrôles :</u></h2>
+		<p>← → ↑ ↓ : permet de se déplacer</p>
+		<p>↥ : permet d'accélérer</p>
+		<h4 style="color: red;">Veillez désactiver votre bloqueur de pub afin d'avoir une expérience de jeu complète.</h4>
+		<h4 style="color: red;">Veillez vous mettre en pleine écran et activer le son de votre ordinateur.</h4>
+		<p style="color:blue">Amusez vous bien ! &#x1F609;</p>
+		</center>
+
+		<div id="videoOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999;">
+			<video id="OpeningVideo" style="width: 100%; height: 100%; object-fit: cover;" autoplay>
+				<source src="Opening.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+		</div>
+
+		</div>
+	</body.centre>
+
+	<div id="Mon_Timer" style="
+		display: none;
+	">	
+	</div>
+
+	<script type="text/javascript" src="script.js">play_1()</script>
+	<script type="text/javascript">document.addEventListener("DOMContentLoaded", () => {
+		ResetTimerHandler();
+	});</script>
+
+</html>
