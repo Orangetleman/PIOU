@@ -4,7 +4,7 @@ NOTRE AMOUREUX, NOTRE AMOURE DE NOTRE VIE, NOTRE RAISON DE VIVRE
 
 MAJ 1.1 :
     Bugs & améliorations :
-        - Crumb périmé + périmé
+        - Crumb périmé + périmé (chagement de design)
         - Murs
         - Dimensions Piou
     Nouveau lvl :
