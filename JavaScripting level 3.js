@@ -48,6 +48,12 @@ function init(){
 	let evier = document.getElementById("evier")
 	evier.style.left = "1500px"
 	evier.style.top = "657px"
+	let Mur = document.getElementById("Mur")
+	Mur.style.left = "1865px"
+	Mur.style.top = "300px"
+	let Mur2 = document.getElementById("Mur2")
+	Mur2.style.left = "10px"
+	Mur2.style.top = "920px"
 }
 
 function update() {
@@ -228,6 +234,8 @@ function manageIntersect(direction) {
 	return false;
 }
 
+/*===============================================================*/
+
 document.addEventListener("keydown", (event) => {
     const piou = document.getElementById("piou");
 
@@ -302,8 +310,7 @@ function isIntersecting(rect1, rect2) {
 function Home() {
     location.replace("Home.html")
 }
-function Level_1_button(nextpage) {
-    localStorage.removeItem("counter");
+function Level_1() {
     const overlay = document.getElementById("videoOverlay");
     const video = document.getElementById("OpeningVideo");
 
@@ -311,7 +318,7 @@ function Level_1_button(nextpage) {
     video.play();
 
     video.onended = () => {
-        location.replace(nextpage);
+        location.replace("Level 1.html");
     };
 }
 function Level_2() {
