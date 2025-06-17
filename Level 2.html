@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Level 2</title>
+		<link rel="icon" type="image/x-icon" href="deux.png"/>
+		<link rel="stylesheet" href="CssFDG.css"/>
+		<link rel="stylesheet" href="style_level_map.css"/>
+	</head>
+	<body>
+		<div class="flex-container" id="menu">
+			<button class="navigation_button" type="button" onclick="Home_button();play_1()"> Home </button>
+			<button class="navigation_button" type="button" onclick="Level_1('Level 1.html');play_1()"> Level 1 </button>
+			<button class="navigation_button" type="button" onclick="Level_3_button();play_1()"> Level 3 </button>
+			<button class="navigation_button" type="button" onclick="Credits_button();play_1()"> Credits </button>
+			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
+		</div>
+		<div class="flex-container" id="lvl1">
+			<div style="font-size : 5em; color : yellow">The Bathroom</div>
+		</div>
+		<div id="counterContainer">
+			<p id="counter">0</p>
+		</div>
+		<div id="TimerContainer">
+			<div id="Mon_Timer">Timer: 0 seconds</div>
+		</div>
+		<img class="image" id="beignoire" style="position: absolute" src="beignoire.png" width="400" height="250"></img>
+        <img class="image" id="muret" style="position: absolute" src="muret.png" width="1000" height="20"></img>
+        <img class="image" id="lavabo" style="position: absolute" src="lavabo.png" width="400" height="180"></img>
+        <img class="image" id="toilettes" style="position: absolute" src="toilettes.png" width="100" height="150"></img>
+        <img class="image" id="douche" style="position: absolute" src="douche.png" width="225" height="225"></img>
+        <img id="tapis" style="position: absolute" src="tapis.png" width="150" height="200"></img>
+		<img class="image" id="machinewashin" style="position: absolute" src="machinewashin.png" width="150" height="200"></img>
+
+
+        <img id="crumb4" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+        <img id="crumb2" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+        <img id="crumb1" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+		<img id="crumbpérimé" style="position: absolute" src="Crumb perime.png" width="50" height="50"></img>
+		
+		<img class="porte" id="porte3" style="position: absolute" src="porte3.png" width="278" height="21"></img>
+		<img id="porte4" style="position: absolute" src="porte4.png" width="235" height="119"></img>
+
+		<img draggable="true" id="piou" style="position: absolute" src="piou haut droit.png" width="160" height="160"></img>
+
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="JavaScripting level_2.js"></script>
+		<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+
+		<div id="videoOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999;">
+			<video id="OpeningVideo" style="width: 100%; height: 100%; object-fit: cover;" autoplay>
+				<source src="Opening.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+		</div>
+		
+	</body>
+
+</html>

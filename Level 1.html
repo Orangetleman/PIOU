@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<title>Level 1</title>
+		<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/x-icon" href="un.png"/>
+		<link rel="stylesheet" href="CssFDG.css"/>
+		<link rel="stylesheet" href="style_level_map.css"/>
+	</head>
+	<body>
+		<div class="flex-container" id="menu">
+			<button class="navigation_button" type="button" onclick="Home_button();play_1()"> Home </button>
+			<button class="navigation_button" type="button" onclick="Level_2_button();play_1()"> Level 2 </button>
+			<button class="navigation_button" type="button" onclick="Credits_button();play_1()"> Credits </button>
+			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
+		</div>
+		<div class="flex-container" id="lvl1">
+			<div style="font-size : 5em; color : yellow">The Room</div>
+		</div>
+		<div id="counterContainer">
+			<p id="counter">0</p>
+		</div>
+		<div id="TimerContainer">
+			<p id="Mon_Timer">Timer: 0 seconds</p>
+		</div>
+
+		<img class="image" id="lit" style="position: absolute" src="Lit.png" width="200" height="350"></img>
+		<img class="image" id="commode1" style="position: absolute" src="Commode.png" width="150" height="150"></img>
+		<img class="image" id="commode2" style="position: absolute" src="Commode.png" width="150" height="150"></img>
+		<img class="image" id="peluche" style="position: absolute" src="Peluche.png" width="150" height="150"></img>
+		<img class="image" id="bureau" style="position: absolute" src="Bureau.png" width="350" height="175"></img>
+		<img class="image" id="chaise" style="position: absolute" src="Chaise.png" width="100" height="100"></img> 
+		<img class="image" id="poubelle" style="position: absolute" src="poubelle.png" width="65" height="65"></img>
+
+		<img id="crumb4" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+		<img id="crumb3" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+		<img id="crumb2" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+		<img id="crumb1" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+
+		<img class="porte" id="porte1" style="position: absolute" src="porte1.png" width="21" height="278"></img>
+		<img id="porte2" style="position: absolute" src="porte2.png" width="119" height="235"></img>
+
+		<img id="piou" style="position: absolute" src="piou haut droit.png" width="160" height="160"></img>
+
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript" src="JavaScripting.js"></script>
+		<script type="text/javascript" src="rotate.js"></script>
+		<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+		<script type="text/javascript">document.addEventListener("DOMContentLoaded", () => {
+			ResetTimerHandler();
+		});</script>
+	</body>
+</html>
+
