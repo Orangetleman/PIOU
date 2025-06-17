@@ -18,6 +18,24 @@ ol.point {list-style-type: inherit;}
   display: inline-block;
   font-size: 16px;
 }
+:root {
+  --taille: 200px;
+  --bord: 10px;
+  --couleur-fond: lightgreen;
+  --couleur-bord: green;
+}
+.bloc {
+  width: var(--taille);
+  height: var(--taille);
+  background:
+    linear-gradient(var(--couleur-bord), var(--couleur-bord)) top / 100% var(--bord) no-repeat,
+    linear-gradient(var(--couleur-bord), var(--couleur-bord)) bottom / 100% var(--bord) no-repeat,
+    linear-gradient(var(--couleur-bord), var(--couleur-bord)) left / var(--bord) 100% no-repeat,
+    linear-gradient(var(--couleur-bord), var(--couleur-bord)) right / var(--bord) 100% no-repeat,
+    var(--couleur-fond);
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
 #buttonLvl2 {
   background-color: blue;
   border: none;

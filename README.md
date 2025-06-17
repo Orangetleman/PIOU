@@ -8,7 +8,7 @@ MAJ 1.1 :
         - Murs
         - Dimensions Piou
     Nouveau lvl :
-        - Bonus level boutton
+        - Bonus level boutton (qui s'affiche dans la barre du haut à la fin)
         - layout des murs
         - pages de fin (mort & survie)
         - crumbs "attractifs"

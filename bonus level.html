@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang=""fr>
+    <head>
+        <title>Bonus level</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="icon" type="image/x-icon" href="Bonus level.png"/>
+            <link rel="stylesheet" href="CssFDG.css"/>
+            <link rel="stylesheet" href="style_level_map.css"/>
+    </head>
+    <body>
+
+        <div class="bloc" id="bloc"></div>
+
+    <div >
+        <button class="level_button" onclick="changerTaille(100)">100px</button>
+        <button class="level_button" onclick="changerTaille(200)">200px</button>
+        <button class="level_button" onclick="changerTaille(300)">300px</button>
+    </div>
+
+    <script>
+        function changerTaille(valeur) {
+        document.getElementById('bloc').style.setProperty('--taille', valeur + 'px');
+        }
+    </script>
+
+    </body>
+</html>
