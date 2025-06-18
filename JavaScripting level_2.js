@@ -297,17 +297,21 @@ function isIntersecting(rect1, rect2) {
 function Home() {
     location.replace("Home.html")
 }
-function Level_1_button(nextpage) {
-    localStorage.removeItem("counter");
+function Level_1() {
     const overlay = document.getElementById("videoOverlay");
     const video = document.getElementById("OpeningVideo");
+    const videoPlayed = localStorage.getItem("videoPlayed") === "true";
 
-    overlay.style.display = "block";
-    video.play();
-
-    video.onended = () => {
-        location.replace(nextpage);
-    };
+    if (!videoPlayed) {
+        overlay.style.display = "block";
+        video.play();
+        video.onended = () => {
+            localStorage.setItem("videoPlayed", "true");
+            location.replace("Level 1.html");
+        };
+    } else {
+        location.replace("Level 1.html");
+    }
 }
 function Level_2() {
     location.replace("Level 2.html")

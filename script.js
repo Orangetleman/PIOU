@@ -7,18 +7,6 @@ function Home_button() {
     localStorage.removeItem("counter");
     location.replace("Home.html")
 }
-function Level_1_button(nextpage) {
-    localStorage.removeItem("counter");
-    const overlay = document.getElementById("videoOverlay");
-    const video = document.getElementById("OpeningVideo");
-
-    overlay.style.display = "block";
-    video.play();
-
-    video.onended = () => {
-        location.replace(nextpage);
-    };
-}
 function Level_2_button() {
     localStorage.removeItem("counter");
     location.replace("Level 2.html")

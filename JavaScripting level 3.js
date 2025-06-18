@@ -339,13 +339,40 @@ function Home() {
 function Level_1() {
     const overlay = document.getElementById("videoOverlay");
     const video = document.getElementById("OpeningVideo");
+    const videoPlayed = localStorage.getItem("videoPlayed") === "true";
 
-    overlay.style.display = "block";
-    video.play();
-
-    video.onended = () => {
+    if (!videoPlayed) {
+        overlay.style.display = "block";
+        video.play();
+        video.onended = () => {
+            localStorage.setItem("videoPlayed", "true");
+            location.replace("Level 1.html");
+        };
+    } else {
         location.replace("Level 1.html");
-    };
+    }
+}function finishGame() {
+    const overlay = document.getElementById("videoOverlay");
+    const video = document.getElementById("EndingVideo");
+    const videoFinished = localStorage.getItem("videoFinished") === "true";
+
+    if (!videoFinished) {
+        alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
+        localStorage.removeItem("counter");
+        stopTimerHandler();
+
+        overlay.style.display = "block";
+        video.play();
+
+        video.onended = () => {
+            localStorage.setItem("videoFinished", "true");
+            setTimeout(() => {
+                location.replace("Credits.html");
+            }, 100);
+        };
+    } else {
+        location.replace("Credits.html");
+    }
 }
 function Level_2() {
     location.replace("Level 2.html")
@@ -371,18 +398,31 @@ function vomiMiette() {
 }
 
 function finishGame() {
-	alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
-	localStorage.removeItem("counter");
-	stopTimerHandler();
-	const overlay = document.getElementById("videoOverlay");
+    const overlay = document.getElementById("videoOverlay");
     const video = document.getElementById("EndingVideo");
+    const videoFinished = localStorage.getItem("videoFinished") === "true";
 
-    overlay.style.display = "block";
-    video.play();
+    if (!videoFinished) {
+        alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
+        localStorage.removeItem("counter");
+        stopTimerHandler();
 
-    video.onended = () => {
-		setTimeout(() => {
+        overlay.style.display = "block";
+        video.play();
+
+        video.onended = () => {
+            localStorage.setItem("videoFinished", "true");
+            setTimeout(() => {
+                location.replace("Credits.html");
+            }, 100);
+        };
+    } else {
+		alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
+        localStorage.removeItem("counter");
+        stopTimerHandler();
+		console.log("Video already played, redirecting to Credits.");
+        setTimeout(() => {
 			location.replace("Credits.html");
 		}, 100);
-    };
+    }
 }
