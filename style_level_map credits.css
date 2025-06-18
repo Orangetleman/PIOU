@@ -1,0 +1,149 @@
+body {
+  background-color:lightgreen;
+}
+.white {
+  color:white
+}
+.black {
+  font-family:'Comic Sans MS'
+}
+ol.point {list-style-type: inherit;}
+#buttonHome {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+:root {
+  --taille: 200px;
+  --bord: 10px;
+  --couleur-fond: lightgreen;
+  --couleur-bord: green;
+}
+/*.bloc {
+  width: var(--taille);
+  height: var(--taille);
+  background:
+    linear-gradient(var(--couleur-bord), var(--couleur-bord)) top / 100% var(--bord) no-repeat,
+    linear-gradient(var(--couleur-bord), var(--couleur-bord)) bottom / 100% var(--bord) no-repeat,
+    linear-gradient(var(--couleur-bord), var(--couleur-bord)) left / var(--bord) 100% no-repeat,
+    linear-gradient(var(--couleur-bord), var(--couleur-bord)) right / var(--bord) 100% no-repeat,
+    var(--couleur-fond);
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}*/
+#buttonLvl2 {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+#buttonDevs {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: blue;
+    padding: 0px;
+}
+#counterContainer {
+  font-size: 1.5rem;
+  font-family: "Oswald", sans-serif;
+  color: rgb(151, 141, 0);
+  border: 5px solid #666;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: rgb(133, 255, 129);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 120px;
+  margin-left: 1350px;
+}
+#TimerContainer {
+  font-size: 1.5rem;
+  font-family: "Oswald", sans-serif;
+  color: rgb(151, 141, 0);
+  border: 5px solid #666;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: rgb(133, 255, 129);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 120px;
+  margin-left: 350px;
+}
+#piou_rotate {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  transition: transform 0.1s ease-out;
+}
+.navigation_button {
+  font-size: 1.5rem; /* Increase font size */
+  padding: 15px 30px; /* Increase padding for larger buttons */
+  margin: 10px;
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth color change and hover effect */
+}
+.navigation_button:hover {
+  background-color: lightskyblue;
+  font-weight: bold;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+.level_button {
+  font-size: 1.5rem; /* Increase font size */
+  padding: 15px 30px; /* Increase padding for larger buttons */
+  margin: 10px;
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth color change and hover effect */
+}
+.level_button:hover {
+  background-color: #666;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+.stop_button {
+  font-size: 1.5rem; /* Increase font size */
+  padding: 10px 25px; /* Increase padding for larger buttons */
+  margin: 10px;
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  background-color: blue;
+  color: purple;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth color change and hover effect */
+}
+.stop_button:hover {
+  background-color: rgb(208, 104, 249);
+  font-weight: bold;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+.hypertext:hover {
+  color: green;
+}

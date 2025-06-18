@@ -9,20 +9,46 @@
             <link rel="stylesheet" href="style_level_map.css"/>
     </head>
     <body>
+        <div class="flex-container" id="menu">
+			<button class="navigation_button" type="button" onclick="Home_button();play_1()"> Home </button>
+			<button class="navigation_button" type="button" onclick="Level_2_button();play_1()"> Level 2 </button>
+			<button class="navigation_button" type="button" onclick="Credits_button();play_1()"> Credits </button>
+			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
+		</div>
+		<div class="flex-container" id="lvl1">
+			<div style="font-size : 5em; color : yellow">The Room</div>
+		</div>
+		<div id="counterContainer">
+			<p id="counter">0</p>
+		</div>
+		<div id="TimerContainer">
+			<p id="Mon_Timer">Timer: 0 seconds</p>
+		</div>
 
-        <div class="bloc" id="bloc"></div>
+    <!--<div class="bloc" id="bloc"></div>--> 
 
-    <div >
+    <!--<div >
         <button class="level_button" onclick="changerTaille(100)">100px</button>
         <button class="level_button" onclick="changerTaille(200)">200px</button>
         <button class="level_button" onclick="changerTaille(300)">300px</button>
-    </div>
+    </div>--> 
 
-    <script>
+
+    <img id="piou" style="position: absolute" src="piou haut droit.png" width="107" height="61"></img>
+
+
+
+
+
+    <!--<script>
         function changerTaille(valeur) {
         document.getElementById('bloc').style.setProperty('--taille', valeur + 'px');
         }
-    </script>
+    </script>--> 
+
+    <script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="JavaScripting BL.js"></script>
+	<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
 
     </body>
 </html>
