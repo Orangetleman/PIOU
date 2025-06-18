@@ -52,6 +52,10 @@ function Credits() {
     location.replace("Credits.html")
 }
 
+function Level_bonus_button() {
+    location.replace("bonus level.html")
+}
+
 function updateCounter() {
     const counterElement = document.getElementById("counter");
     counterElement.textContent = crumbCounter;
