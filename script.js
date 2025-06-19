@@ -40,7 +40,14 @@ function reset_run() {
     localStorage.setItem("firstRun", null);
     localStorage.setItem("videoPlayed", "false");
     localStorage.setItem("videoFinished", "false");
-    alert("First Run has been reset to null.");
+    // Afficher l'icône de validation temporairement
+    const icon = document.getElementById("resetSuccessIcon");
+    if (icon) {
+        icon.style.display = "inline";
+        setTimeout(() => {
+            icon.style.display = "none";
+        }, 2000);
+    }
     console.log("videoFinished:", localStorage.getItem("videoFinished"));
     console.log("videoPlayed:", localStorage.getItem("videoPlayed"));
     console.log("firstRun:", localStorage.getItem("firstRun"));
