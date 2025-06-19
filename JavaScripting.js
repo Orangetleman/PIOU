@@ -6,7 +6,7 @@ let Speed = 5
 let positionX = 60
 let positionY = 500
 let schroum = new Audio("schroum.m4a")
-let dim_piou = { width: 536/5, height: 305/5 };
+let dim_piou = { width: 536/5*1.5, height: 305/5*1.5 };
 
 
 function init(){

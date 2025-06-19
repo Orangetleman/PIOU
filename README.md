@@ -6,12 +6,12 @@ MAJ 1.1 :
     Bugs & améliorations :
         - Crumb périmé + périmé                                                                         DONE
         - Murs                                                                                          DONE
-        - Dimensions Piou                                                                               AGRANDIR PIOU
-        - 1 seule fois les cinématiques                                                                 BUG ENDING?
+        - Dimensions Piou                                                                               DONE
+        - 1 seule fois les cinématiques                                                                 
     Nouveau lvl :
         - Bonus level boutton (qui s'affiche dans la barre du haut à la fin)
         - layout des murs
         - pages de fin (mort & survie)
         - crumbs "attractifs"
-        - Opening (& Ending?)
+        - Opening (& Ending?)                                                                           EN COURS (1/?)
         - texte explicatif drogue (défilant?)

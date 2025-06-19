@@ -8,7 +8,7 @@ let positionY = 300
 let schroum = new Audio("schroum.m4a")
 let Triche = 0;
 let currentCount = getCounter();
-let dim_piou = { width: 536/5, height: 305/5 };
+let dim_piou = { width: 536/5*1.5, height: 305/5*1.5 };
 
 
 function init(){
