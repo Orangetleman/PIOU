@@ -11,7 +11,7 @@
 		<div class="flex-container" id="menu">
 			<button class="navigation_button" type="button" onclick="Home_button();play_1()"> Home </button>
 			<button class="navigation_button" type="button" onclick="Level_2_button();play_1()"> Level 2 </button>
-			<button class="navigation_button" type="button" onclick="Credits_button();play_1()"> Credits </button>
+			<button class="navigation_button" type="button" onclick="Credits();play_1()"> Credits </button>
 			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
 		</div>
 		<div class="flex-container" id="lvl1">
@@ -51,6 +51,12 @@
 		<script type="text/javascript">document.addEventListener("DOMContentLoaded", () => {
 			ResetTimerHandler();
 		});</script>
+		<div id="videoOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999;">
+			<video id="OpeningVideo" style="width: 100%; height: 100%; object-fit: cover;" autoplay>
+				<source src="Opening.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+		</div>
 	</body>
 </html>
 

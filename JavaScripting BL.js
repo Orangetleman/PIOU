@@ -242,17 +242,11 @@ function isIntersecting(rect1, rect2) {
 function Home() {
     location.replace("Home.html")
 }
-function Level_1() {
-    location.replace("Level 1.html")
-}
 function Level_2() {
     location.replace("Level 2.html")
 }
 function Level_3() {
     location.replace("Level 3.html")
-}
-function Credits() {
-    location.replace("Credits.html")
 }
 
 function mangeMiette() {

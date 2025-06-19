@@ -8,10 +8,11 @@
 		<link rel="stylesheet" href="style_level_map.css"/>
 		<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
 	</head>
-	<body.centre>
+	<body class="centre">
 		<div class="flex-container" id="menu">
 			<button class="navigation_button" type="button" onclick="Credits();play_1()"> Credits </button>
 			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
+			<button class="reset_button" type="button" onclick="reset_run()"> Reset to First Run </button>
 		</div>
 		<div class="flex-container" id="lvl1">
 			<div style="font-size : 5em; color : yellow">Home</div>
@@ -45,7 +46,7 @@
 		</div>
 
 		</div>
-	</body.centre>
+	</body class="centre">
 
 	<div id="Mon_Timer" style="
 		display: none;
@@ -56,5 +57,6 @@
 	<script type="text/javascript">document.addEventListener("DOMContentLoaded", () => {
 		ResetTimerHandler();
 	});</script>
+});</script>
 
 </html>

@@ -1,4 +1,3 @@
-
 let crumbCounter = 0;
 let toum = new Audio("toum.mp4")
 let musiqueActive = true;
@@ -15,29 +14,58 @@ function Level_3_button() {
     localStorage.removeItem("counter");
     location.replace("Level 3.html")
 }
-function Credits_button() {
-    localStorage.removeItem("counter");
-    location.replace("Credits.html")
-}
-
 function Home() {
     location.replace("Home.html")
 }
+document.addEventListener("DOMContentLoaded", () => {
+    // Centralize initialization of videoPlayed and videoFinished
+    if (localStorage.getItem("videoPlayed") === null) {
+        localStorage.setItem("videoPlayed", "false");
+        console.log("videoPlayed initialized to false.");
+    }
+
+    if (localStorage.getItem("videoFinished") === null) {
+        localStorage.setItem("videoFinished", "false");
+    }
+
+    // Add a firstRun key to detect the first execution
+    if (localStorage.getItem("firstRun") === null) {
+        localStorage.setItem("firstRun", "true");
+        localStorage.setItem("videoPlayed", "false");
+        localStorage.setItem("videoFinished", "false");
+        console.log("First run detected. videoPlayed and videoFinished initialized to false.");
+    }
+});
+function reset_run() {
+    localStorage.setItem("firstRun", null);
+    localStorage.setItem("videoPlayed", "false");
+    localStorage.setItem("videoFinished", "false");
+    alert("First Run has been reset to null.");
+    console.log("videoFinished:", localStorage.getItem("videoFinished"));
+    console.log("videoPlayed:", localStorage.getItem("videoPlayed"));
+    console.log("firstRun:", localStorage.getItem("firstRun"));
+}
+
 function Level_1() {
     const overlay = document.getElementById("videoOverlay");
     const video = document.getElementById("OpeningVideo");
-    const videoPlayed = localStorage.getItem("videoPlayed") === "true";
 
-    if (!videoPlayed) {
-        console.log("Video not played yet, showing overlay and playing video.");
+    console.log("Checking videoPlayed state before playing:", localStorage.getItem("videoPlayed"));
+
+    if (localStorage.getItem("videoPlayed") !== "true") {
         overlay.style.display = "block";
+        video.currentTime = 0;
         video.play();
         video.onended = () => {
             localStorage.setItem("videoPlayed", "true");
-            location.replace("Level 1.html");
+            console.log("videoPlayed set to true after video ends.");
+            setTimeout(() => {
+                overlay.style.display = "none";
+                location.replace("Level 1.html");
+            }, 100); // Ensure localStorage updates persist before redirection
         };
     } else {
-        console.log("Video already played, redirecting to Level 1.");
+        console.log("videoPlayed is already true, skipping video.");
         location.replace("Level 1.html");
     }
 }
@@ -55,6 +83,42 @@ function Credits() {
 function Level_bonus_button() {
     location.replace("bonus level.html")
 }
+
+function finishGame() {
+    console.log("finishGame called");
+    const overlay = document.getElementById("videoOverlay");
+    const video = document.getElementById("EndingVideo");
+	console.log("videoFinished:", localStorage.getItem("videoFinished"));
+    console.log("firstRun:", localStorage.getItem("firstRun"));
+
+    if (localStorage.getItem("videoFinished") !== "true") {
+        console.log("Playing ending video for the first time.");
+        alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
+        localStorage.removeItem("counter");
+        stopTimerHandler();
+
+        overlay.style.display = "block";
+        video.currentTime = 0;
+        video.play()
+
+        video.onended = () => {
+            console.log("Video finished playing.");
+            localStorage.setItem("videoFinished", "true");
+            console.log("Video finished, redirecting to Credits.");
+            setTimeout(() => {
+                location.replace("Credits.html");
+            }, 100);
+        };
+    } else {
+        console.log("Video already played, redirecting to Credits.");
+		alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
+        localStorage.removeItem("counter");
+        stopTimerHandler();
+        setTimeout(() => {
+			location.replace("Credits.html");
+			}, 100);
+		}
+	}
 
 function updateCounter() {
     const counterElement = document.getElementById("counter");

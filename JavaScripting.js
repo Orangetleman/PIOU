@@ -1,5 +1,3 @@
-
-
 let MovingL = false
 let MovingR = false
 let MovingU = false
@@ -9,6 +7,7 @@ let positionX = 60
 let positionY = 500
 let schroum = new Audio("schroum.m4a")
 let dim_piou = { width: 536/5, height: 305/5 };
+
 
 function init(){
 
@@ -287,9 +286,6 @@ function isIntersecting(rect1, rect2) {
 
 function Home() {
     location.replace("Home.html")
-}
-function Level_1() {
-    location.replace("Level 1.html")
 }
 function Level_2() {
     location.replace("Level 2.html")

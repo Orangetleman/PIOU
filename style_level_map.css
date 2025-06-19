@@ -140,6 +140,17 @@ ol.point {list-style-type: inherit;}
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s; /* Smooth color change and hover effect */
 }
+.reset_button {
+  font-size: 1.5rem; /* Increase font size */
+  padding: 10px 25px; /* Increase padding for larger buttons */
+  margin: 10px;
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  background-color: blue;
+  color: rgb(250, 167, 13);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth color change and hover effect */
+}
 .stop_button:hover {
   background-color: rgb(208, 104, 249);
   font-weight: bold;

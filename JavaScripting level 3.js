@@ -10,6 +10,7 @@ let Triche = 0;
 let currentCount = getCounter();
 let dim_piou = { width: 536/5, height: 305/5 };
 
+
 function init(){
 
 	let porte5 = document.getElementById("porte5")
@@ -51,10 +52,10 @@ function init(){
 	let Mur = document.getElementById("Mur")
 	Mur.style.left = "1865px"
 	Mur.style.top = "300px"
-	let Mur2 = document.getElementById("Mur2")
-	Mur2.style.left = "10px"
-	Mur2.style.top = "920px"
-}
+		let Mur2 = document.getElementById("Mur2")
+		Mur2.style.left = "10px"
+		Mur2.style.top = "920px"
+	}
 
 function update() {
 	let piou = document.getElementById("piou")
@@ -336,44 +337,6 @@ function isIntersecting(rect1, rect2) {
 function Home() {
     location.replace("Home.html")
 }
-function Level_1() {
-    const overlay = document.getElementById("videoOverlay");
-    const video = document.getElementById("OpeningVideo");
-    const videoPlayed = localStorage.getItem("videoPlayed") === "true";
-
-    if (!videoPlayed) {
-        overlay.style.display = "block";
-        video.play();
-        video.onended = () => {
-            localStorage.setItem("videoPlayed", "true");
-            location.replace("Level 1.html");
-        };
-    } else {
-        location.replace("Level 1.html");
-    }
-}function finishGame() {
-    const overlay = document.getElementById("videoOverlay");
-    const video = document.getElementById("EndingVideo");
-    const videoFinished = localStorage.getItem("videoFinished") === "true";
-
-    if (!videoFinished) {
-        alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
-        localStorage.removeItem("counter");
-        stopTimerHandler();
-
-        overlay.style.display = "block";
-        video.play();
-
-        video.onended = () => {
-            localStorage.setItem("videoFinished", "true");
-            setTimeout(() => {
-                location.replace("Credits.html");
-            }, 100);
-        };
-    } else {
-        location.replace("Credits.html");
-    }
-}
 function Level_2() {
     location.replace("Level 2.html")
 }
@@ -397,32 +360,3 @@ function vomiMiette() {
     document.getElementById("counter").textContent = "Crumbs eaten : " + currentCount;
 }
 
-function finishGame() {
-    const overlay = document.getElementById("videoOverlay");
-    const video = document.getElementById("EndingVideo");
-    const videoFinished = localStorage.getItem("videoFinished") === "true";
-
-    if (!videoFinished) {
-        alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
-        localStorage.removeItem("counter");
-        stopTimerHandler();
-
-        overlay.style.display = "block";
-        video.play();
-
-        video.onended = () => {
-            localStorage.setItem("videoFinished", "true");
-            setTimeout(() => {
-                location.replace("Credits.html");
-            }, 100);
-        };
-    } else {
-		alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
-        localStorage.removeItem("counter");
-        stopTimerHandler();
-		console.log("Video already played, redirecting to Credits.");
-        setTimeout(() => {
-			location.replace("Credits.html");
-		}, 100);
-    }
-}

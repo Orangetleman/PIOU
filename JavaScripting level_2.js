@@ -1,4 +1,3 @@
-
 let MovingL = false
 let MovingR = false
 let MovingU = false
@@ -8,6 +7,11 @@ let positionX = 60
 let positionY = 500
 let schroum = new Audio("schroum.m4a")
 let dim_piou = { width: 536/5, height: 305/5 };
+if (localStorage.getItem("videoPlayed") === null) {
+    localStorage.setItem("videoPlayed", "false");
+    console.log("videoPlayed initialized to false.");
+}
+
 
 function init(){
 
@@ -296,22 +300,6 @@ function isIntersecting(rect1, rect2) {
 
 function Home() {
     location.replace("Home.html")
-}
-function Level_1() {
-    const overlay = document.getElementById("videoOverlay");
-    const video = document.getElementById("OpeningVideo");
-    const videoPlayed = localStorage.getItem("videoPlayed") === "true";
-
-    if (!videoPlayed) {
-        overlay.style.display = "block";
-        video.play();
-        video.onended = () => {
-            localStorage.setItem("videoPlayed", "true");
-            location.replace("Level 1.html");
-        };
-    } else {
-        location.replace("Level 1.html");
-    }
 }
 function Level_2() {
     location.replace("Level 2.html")
