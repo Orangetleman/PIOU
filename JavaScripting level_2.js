@@ -281,7 +281,7 @@ function setPiouDimensions(piou, orientation) {
     }
 
     // Si aucune collision, conserver les nouvelles dimensions
-    console.log("Dimensions changées avec succès.");
+    //console.log("Dimensions changées avec succès.");
 }
 
 document.getElementById("counter").textContent = "Crumbs eaten : " + getCounter();

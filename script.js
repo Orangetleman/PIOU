@@ -162,7 +162,7 @@ function setTimer(value) {
 
 function startTimerHandler() {
     if (timerInterval) {
-        console.log('Le timer est déjà en route.');
+        //console.log('Le timer est déjà en route.');
     } else {
         Enabler.startTimer('Mon_Timer');
         timerInterval = setInterval(() => {

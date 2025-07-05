@@ -25,30 +25,29 @@
 			<p id="Mon_Timer">Timer: 0 seconds</p>
 		</div>
 
-    <div class="bloc" id="bloc"></div>
-
+    <div class="bloc image" id="bloc1" style="position: absolute;"></div>
+    <div class="bloc image" id="bloc2" style="position: absolute;"></div>
+    <div class="bloc image" id="bloc3" style="position: absolute;"></div>
     <div >
-        <button class="level_button" onclick="changerTaille(100)">100px</button>
-        <button class="level_button" onclick="changerTaille(200)">200px</button>
-        <button class="level_button" onclick="changerTaille(300)">300px</button>
+        <button class="level_button" onclick="changerdimensions(100, 200, 'bloc1')">100px 200px</button>
+        <button class="level_button" onclick="changerdimensions(200, 100, 'bloc1')">200px 100px</button>
     </div>
 
-
     <img id="piou" style="position: absolute" src="piou haut droit.png" width="160.5" height="91.5S"></img>
-
-
-
-
-
-    <script>
-        function changerTaille(valeur) {
-        document.getElementById('bloc').style.setProperty('--taille', valeur + 'px');
-        }
-    </script>
 
     <script type="text/javascript" src="script.js"></script>
 	<script type="text/javascript" src="JavaScripting BL.js"></script>
 	<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+
+    <script>
+        // Initialiser les dimensions et la position des blocs APRÈS que les fonctions soient chargées
+        changerdimensions(150, 150, 'bloc1');
+        changerdimensions(150, 150, 'bloc2');
+        changerdimensions(150, 150, 'bloc3');
+        placerBloc(300, 500, 'bloc1'); // bloc1 à gauche
+        placerBloc(400, 600, 'bloc2'); // bloc2 au centre
+        placerBloc(700, 700, 'bloc3'); // bloc3 à droite
+    </script>
 
     </body>
 </html>

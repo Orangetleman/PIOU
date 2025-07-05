@@ -1,5 +1,3 @@
-
-
 let MovingL = false
 let MovingR = false
 let MovingU = false
@@ -129,9 +127,8 @@ function manageIntersect(direction) {
 	NouvPiouDim.right = NouvPiouDim.left + piouDim.width
 	NouvPiouDim.bottom = NouvPiouDim.top + piouDim.height
 
-	
-	
-	for (const otherElement of document.querySelectorAll('img.image')) {
+	// Prendre en compte tous les éléments avec la classe .image (img ou div)
+	for (const otherElement of document.querySelectorAll('.image')) {
 		if (piou != otherElement) {
 			let mobilierDim = otherElement.getBoundingClientRect();
 			if (isIntersecting(NouvPiouDim, mobilierDim)){
@@ -210,7 +207,7 @@ function setPiouDimensions(piou, orientation) {
 
     // Vérifier si le personnage entre en collision avec un obstacle
     const piouDim = piou.getBoundingClientRect();
-    for (const obstacle of document.querySelectorAll('img.image')) {
+    for (const obstacle of document.querySelectorAll('.image')) {
         const obstacleDim = obstacle.getBoundingClientRect();
         if (isIntersecting(piouDim, obstacleDim)) {
             // Collision détectée, annuler le changement de dimensions
@@ -222,7 +219,7 @@ function setPiouDimensions(piou, orientation) {
     }
 
     // Si aucune collision, conserver les nouvelles dimensions
-    console.log("Dimensions changées avec succès.");
+    //console.log("Dimensions changées avec succès.");
 }
 
 document.getElementById("counter").textContent = "Crumbs eaten : " + getCounter();
@@ -254,5 +251,15 @@ function mangeMiette() {
     currentCount++;
     setCounter(currentCount); 
     document.getElementById("counter").textContent = "Crumbs eaten : " + currentCount;
+}
+
+function changerdimensions(height, width, id) {
+	document.getElementById(id).style.height = height + 'px';
+	document.getElementById(id).style.width = width + 'px';
+}
+function placerBloc(x, y, id) {
+	const bloc = document.getElementById(id);
+	bloc.style.left = x + 'px';
+	bloc.style.top = y + 'px';
 }
 
