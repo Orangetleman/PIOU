@@ -8,10 +8,25 @@ let positionY = 500
 let schroum = new Audio("schroum.m4a")
 let dim_piou = { width: 536/5*1.5, height: 305/5*1.5 };
 
+// --- Déclaration des compteurs de crumbs mangés derrière chaque mur ---
+const crumbsMangesParMur = {
+    bloc1: 0,
+    bloc2: 0,
+    bloc3: 0,
+    bloc_compression_1: 0,
+    bloc_compression_2: 0,
+    porte1: 0,
+    porte2: 0,
+    porte3: 0
+};
+
 function init(){
-	let piou = document.getElementById("piou")
-	piou.style.left = "400px"
-	piou.style.top = "700px"
+    let crumb1 = document.getElementById("crumb1");
+    crumb1.style.left = "1000px"; // Place-le loin de Piou au départ
+    crumb1.style.top = "500px";
+    let piou = document.getElementById("piou");
+    piou.style.left = "400px";
+    piou.style.top = "700px";
 }
 
 function update() {
@@ -36,43 +51,41 @@ function update() {
 		}
 	}
 
+	*/
 	if (document.getElementById("crumb1")) {
+		let crumb1 = document.getElementById("crumb1");
 		let crumb1Dim = crumb1.getBoundingClientRect();
 		if (isIntersecting(crumb1Dim, NouvPiouDim)) {
 			console.log("boo");
 			removeImage(crumb1);
 			schroum.play();
-			mangeMiette()
+			mangeMiette(crumb1);
 		}
 	}
+	
+	// Gérer tous les crumbs liés à un mur/porte
+	document.querySelectorAll('img[data-mur], img[data-porte]').forEach(crumb => {
+		if (crumb && crumb.style.display !== "none") {
+			let crumbDim = crumb.getBoundingClientRect();
+			if (isIntersecting(crumbDim, NouvPiouDim)) {
+				removeImage(crumb);
+				schroum.play();
+				mangeMiette(crumb);
+			}
+		}
+	});
 
-	if (document.getElementById("crumb2")) {
-		let crumb2Dim = crumb2.getBoundingClientRect();
-		if (isIntersecting(crumb2Dim, NouvPiouDim)) {
-			console.log("boo");
-			removeImage(crumb2);
-			schroum.play();
-			mangeMiette()
+	// Gérer tous les crumbs "seuls"
+	document.querySelectorAll('img[data-alone="true"]').forEach(crumb => {
+		if (crumb && crumb.style.display !== "none") {
+			let crumbDim = crumb.getBoundingClientRect();
+			if (isIntersecting(crumbDim, NouvPiouDim)) {
+				removeImage(crumb);
+				schroum.play();
+				mangeMiette(); // Pas de paramètre, car pas lié à un mur
+			}
 		}
-	}
-	if (document.getElementById("crumb3")) {
-		let crumb3Dim = crumb3.getBoundingClientRect();
-		if (isIntersecting(crumb3Dim, NouvPiouDim)) {
-			console.log("boo");
-			removeImage(crumb3);
-			schroum.play();
-			mangeMiette()
-		}
-	}
-	if (document.getElementById("crumb4")) {
-		let crumb4Dim = crumb4.getBoundingClientRect();
-		if (isIntersecting(crumb4Dim, NouvPiouDim)) {
-			console.log("boo");
-			removeImage(crumb4);
-			schroum.play();
-			mangeMiette()
-		}
-	}*/
+	});
 
 	if (manageIntersect("L"))
 		MovingL = false;
@@ -246,11 +259,36 @@ function Level_3() {
     location.replace("Level 3.html")
 }
 
-function mangeMiette() {
+function getMurFromCrumb(crumb) {
+    return crumb.dataset.mur;
+}
+
+// Harmonise les ids de blocs associés à une porte ("porteX_blocG", "porteX_blocD", etc.) en "porteX".
+// Pour les autres murs/blocs, retourne l'id tel quel.
+function getMurKeyFromId(id) {
+    if (!id) return null;
+    // Si id commence par "porte" suivi d'un chiffre, puis "_bloc" et une lettre (G/D/H/B)
+    const porteMatch = id.match(/^(porte\d+)_bloc[GDHB]$/);
+    if (porteMatch) return porteMatch[1];
+    // Si id est exactement "porteX" (au cas où)
+    const porteSimple = id.match(/^(porte\d+)$/);
+    if (porteSimple) return porteSimple[1];
+    // Sinon, retourne l'id tel quel (pour les autres murs/blocs)
+    return id;
+}
+
+function mangeMiette(crumb = null) {
     let currentCount = getCounter();
     currentCount++;
     setCounter(currentCount); 
     document.getElementById("counter").textContent = "Crumbs eaten : " + currentCount;
+    // Si le crumb est associé à un mur ou une porte, incrémente le bon compteur harmonisé
+    if (crumb && (crumb.dataset.mur || crumb.dataset.porte)) {
+        const murKey = getMurKeyFromId(crumb.dataset.mur || crumb.dataset.porte);
+        if (murKey && crumbsMangesParMur[murKey] !== undefined) {
+            crumbsMangesParMur[murKey]++;
+        }
+    }
 }
 
 function changerdimensions(height, width, id) {
@@ -263,3 +301,261 @@ function placerBloc(x, y, id) {
 	bloc.style.top = y + 'px';
 }
 
+function animeMur(id, vitesse, poussePiou = true, ancrage = 'topleft') {
+    const bloc = document.getElementById(id);
+    let initialWidth = bloc.offsetWidth;
+    let initialHeight = bloc.offsetHeight;
+    let minWidth = Math.max(10, initialWidth * 0.2);
+    let minHeight = Math.max(10, initialHeight * 0.2);
+    let t = 0;
+    let direction = 1;
+	vitesse = vitesse || 2;
+	vitesse /= 100;
+    let initialLeft = parseFloat(bloc.style.left) || 0;
+    let initialTop = parseFloat(bloc.style.top) || 0;
+
+    // Déduire l'axe à partir de l'ancrage
+    let axe = 3; // Par défaut diagonal
+    if (['topcenter', 'bottomcenter'].includes(ancrage)) {
+        axe = 2; // horizontal
+    } else if (['centerleft', 'centerright'].includes(ancrage)) {
+        axe = 1; // vertical
+    }
+
+    function animate() {
+        t += direction * vitesse;
+        if (t >= 1) { t = 1; direction = -1; }
+        if (t <= 0) { t = 0; direction = 1; }
+
+        let newWidth = initialWidth;
+        let newHeight = initialHeight;
+        if (axe === 1 || axe === 3) {
+            newWidth = initialWidth - (initialWidth - minWidth) * t;
+        }
+        if (axe === 2 || axe === 3) {
+            newHeight = initialHeight - (initialHeight - minHeight) * t;
+        }
+        changerdimensions(newHeight, newWidth, id);
+
+        // --- Ajuster la position selon l'ancrage ---
+        let left = initialLeft;
+        let top = initialTop;
+        if (ancrage === 'topright') {
+            left = initialLeft + (initialWidth - newWidth);
+        } else if (ancrage === 'bottomleft') {
+            top = initialTop + (initialHeight - newHeight);
+        } else if (ancrage === 'bottomright') {
+            left = initialLeft + (initialWidth - newWidth);
+            top = initialTop + (initialHeight - newHeight);
+        } else if (ancrage === 'center') {
+            left = initialLeft + (initialWidth - newWidth) / 2;
+            top = initialTop + (initialHeight - newHeight) / 2;
+        } else if (ancrage === 'centerright') {
+            left = initialLeft + (initialWidth - newWidth);
+            top = initialTop + (initialHeight - newHeight) / 2;
+        } else if (ancrage === 'centerleft') {
+            top = initialTop + (initialHeight - newHeight) / 2;
+        } else if (ancrage === 'topcenter') {
+            left = initialLeft + (initialWidth - newWidth) / 2;
+        } else if (ancrage === 'bottomcenter') {
+            left = initialLeft + (initialWidth - newWidth) / 2;
+            top = initialTop + (initialHeight - newHeight);
+        }
+        bloc.style.left = left + 'px';
+        bloc.style.top = top + 'px';
+        // ---
+
+        // --- Pousser Piou si collision ---
+        if (poussePiou) {
+            const piou = document.getElementById('piou');
+            const blocRect = bloc.getBoundingClientRect();
+            const piouRect = piou.getBoundingClientRect();
+            if (isIntersecting(blocRect, piouRect)) {
+                // Calcul du déplacement selon l'ancrage et l'axe
+                let dx = 0, dy = 0;
+                if (axe === 1 || axe === 3) {
+                    if (['topleft', 'bottomleft', 'centerleft', 'topcenter', 'bottomcenter', 'center'].includes(ancrage)) {
+                        dx = (direction === -1) ? +1 : -1;
+                    } else {
+                        dx = (direction === -1) ? -1 : +1;
+                    }
+                }
+                if (axe === 2 || axe === 3) {
+                    if (['topleft', 'topright', 'topcenter', 'centerleft', 'centerright', 'center'].includes(ancrage)) {
+                        dy = (direction === -1) ? +1 : -1;
+                    } else {
+                        dy = (direction === -1) ? -1 : +1;
+                    }
+                }
+                let force = (axe === 3) ? vitesse * 150 : vitesse * 300;
+                positionX += dx * force;
+                positionY += dy * force;
+                piou.style.left = positionX + 'px';
+                piou.style.top = positionY + 'px';
+                repulsePiouOutOfBloc(bloc);
+            }
+        }
+        checkPiouCompression([id]);
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+function checkPiouCompression(animatedIds) {
+    const piou = document.getElementById('piou');
+    const piouRect = piou.getBoundingClientRect();
+    let intersectingBlocs = [];
+    for (const id of animatedIds) {
+        const bloc = document.getElementById(id);
+        if (!bloc) continue;
+        const blocRect = bloc.getBoundingClientRect();
+        if (isIntersecting(piouRect, blocRect)) {
+            // Si Piou est complètement à l'intérieur d'un mur
+            if (
+                piouRect.left >= blocRect.left &&
+                piouRect.right <= blocRect.right &&
+                piouRect.top >= blocRect.top &&
+                piouRect.bottom <= blocRect.bottom
+            ) {
+                const murKey = getMurKeyFromId(id);
+                if (murKey) {
+                    killPiou("écrasé", murKey);
+                } else {
+                    killPiou();
+                }
+                return;
+            }
+            intersectingBlocs.push({rect: blocRect, id});
+        }
+    }
+    // Vérifier s'il y a au moins deux blocs qui "coinceraient" Piou
+    for (let i = 0; i < intersectingBlocs.length; i++) {
+        for (let j = i + 1; j < intersectingBlocs.length; j++) {
+            const a = intersectingBlocs[i].rect;
+            const b = intersectingBlocs[j].rect;
+            // Coincé horizontalement (un bloc à gauche, un à droite)
+            if (
+                a.right <= piouRect.left && b.left >= piouRect.right ||
+                b.right <= piouRect.left && a.left >= piouRect.right
+            ) {
+                // On prend la clé du premier bloc trouvé
+                const murKey = getMurKeyFromId(intersectingBlocs[i].id) || getMurKeyFromId(intersectingBlocs[j].id);
+                if (murKey) {
+                    killPiou("écrasé", murKey);
+                } else {
+                    killPiou();
+                }
+                return;
+            }
+            // Coincé verticalement (un bloc au-dessus, un en dessous)
+            if (
+                a.bottom <= piouRect.top && b.top >= piouRect.bottom ||
+                b.bottom <= piouRect.top && a.top >= piouRect.bottom
+            ) {
+                const murKey = getMurKeyFromId(intersectingBlocs[i].id) || getMurKeyFromId(intersectingBlocs[j].id);
+                if (murKey) {
+                    killPiou("écrasé", murKey);
+                } else {
+                    killPiou();
+                }
+                return;
+            }
+        }
+    }
+}
+
+function killPiou(reason = "écrasé", murId = null) {
+    const piou = document.getElementById('piou');
+    piou.style.display = 'none';
+    let message = '';
+    const murKey = getMurKeyFromId(murId);
+	console.log("killPiou debug:", {reason, murId, murKey, crumbs: crumbsMangesParMur[murKey]});
+    // Si mort par écrasement et qu'il y a des crumbs à retirer pour ce mur/porte
+    if (
+        reason === "écrasé" &&
+        murKey &&
+        crumbsMangesParMur[murKey] !== undefined &&
+        crumbsMangesParMur[murKey] > 0
+    ) {
+        let currentCount = getCounter();
+        let crumbsToRemove = crumbsMangesParMur[murKey];
+        setCounter(Math.max(0, currentCount - crumbsToRemove));
+        document.getElementById("counter").textContent = "Crumbs eaten : " + getCounter();
+        localStorage.setItem("counter", Math.max(0, currentCount - crumbsToRemove));
+        message = `Piou a été écrasé par ${murKey} ! Les ${crumbsToRemove} crumbs mangés que cachait ce mur sont perdus.`;
+		if (crumbsToRemove === 1) { message = `Piou a été écrasé par ${murKey} ! Le crumb mangé que cachait ce mur est perdu.`; }
+        crumbsMangesParMur[murKey] = 0; // On remet à zéro le compteur de ce mur/porte
+    } else if (reason === "écrasé" && murKey && crumbsMangesParMur[murKey] !== undefined) {
+        // Mort par porte/mur mais aucun crumb mangé derrière
+        message = `Piou a été écrasé par ${murKey} ! Mais aucun crumb n'avait été mangé derrière ce mur.`;
+    } else {
+        switch (reason) {
+            case "feu":
+                message = 'Piou a été brûlé par la boule de feu !';
+                break;
+            case "mur":
+            case "écrasé":
+                message = 'Piou a été écrasé !';
+                break;
+            default:
+                message = 'Piou est mort !';
+        }
+    }
+    alert(message);
+    location.reload();
+}
+
+function repulsePiouOutOfBloc(bloc) {
+    let piou = document.getElementById('piou');
+    let piouRect = piou.getBoundingClientRect();
+    let blocRect = bloc.getBoundingClientRect();
+    let maxIter = 20;
+    let stuck = false;
+
+    while (isIntersecting(blocRect, piouRect) && maxIter-- > 0) {
+        let leftDist = Math.abs(piouRect.right - blocRect.left);
+        let rightDist = Math.abs(blocRect.right - piouRect.left);
+        let topDist = Math.abs(piouRect.bottom - blocRect.top);
+        let bottomDist = Math.abs(blocRect.bottom - piouRect.top);
+        let minDist = Math.min(leftDist, rightDist, topDist, bottomDist);
+
+        if (minDist === leftDist) {
+            positionX -= leftDist + 1;
+        } else if (minDist === rightDist) {
+            positionX += rightDist + 1;
+        } else if (minDist === topDist) {
+            positionY -= topDist + 1;
+        } else if (minDist === bottomDist) {
+            positionY += bottomDist + 1;
+        }
+        piou.style.left = positionX + 'px';
+        piou.style.top = positionY + 'px';
+        piouRect = piou.getBoundingClientRect();
+
+        // Vérifier collision avec n'importe quel autre bloc (fixe ou animé)
+        for (const other of document.querySelectorAll('.image')) {
+            if (other !== bloc && isIntersecting(piouRect, other.getBoundingClientRect())) {
+                stuck = true;
+                break;
+            }
+        }
+        if (stuck) break;
+    }
+    // Si Piou est toujours coincé dans un autre bloc après repousse, il est écrasé
+    if (stuck || isPiouInAnyBlocExcept(bloc)) {
+        killPiou("écrasé", bloc.id);
+    }
+}
+
+// Fonctions utilitaires :
+
+function isPiouInAnyBlocExcept(exceptBloc) {
+    const piou = document.getElementById('piou');
+    const piouRect = piou.getBoundingClientRect();
+    for (const other of document.querySelectorAll('.image')) {
+        if (other !== exceptBloc && isIntersecting(piouRect, other.getBoundingClientRect())) {
+            return true;
+        }
+    }
+    return false;
+}
