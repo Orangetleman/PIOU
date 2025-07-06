@@ -19,3 +19,5 @@ MAJ 1.1 :
         - crumbs "attractifs" ---------------------
         - Opening (Ending?) ----------------------- EN COURS (1/?)
         - texte explicatif drogue (défilant?) -----
+
+icônes des onglets sous licences (lvl bonus)
