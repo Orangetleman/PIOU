@@ -7,6 +7,7 @@ let positionX = 60
 let positionY = 500
 let schroum = new Audio("schroum.m4a")
 let dim_piou = { width: 536/5*1.5, height: 305/5*1.5 };
+let crumb1removed = false
 
 // --- Déclaration des compteurs de crumbs mangés derrière chaque mur ---
 const crumbsMangesParMur = {
@@ -32,7 +33,28 @@ function init(){
 function update() {
 	let piou = document.getElementById("piou")
 	let piouDim = piou.getBoundingClientRect();
-	let NouvPiouDim = { left: piouDim.left, top:piouDim.top, right:piouDim.right, bottom:piouDim.bottom, width: piouDim.width, height: piouDim.height };
+	let NouvPiouDim = { left: piouDim.left, top:piouDim.top, right:piouDim.right, bottom:piouDim.bottom, width: piouDim.width, height: piouDim.height }; 
+    let PiouDimAvecAttract = { left: piouDim.left - 500, top:piouDim.top- 500, right:piouDim.right+ 500, bottom:piouDim.bottom+ 500 };
+
+	if (document.getElementById("crumb1")) {
+		let crumb1 = document.getElementById("crumb1");
+		let crumb1Dim = crumb1.getBoundingClientRect();
+		if (isIntersecting(crumb1Dim, NouvPiouDim)) {
+			console.log("boo");
+			removeImage(crumb1);
+            crumb1removed = true
+			schroum.play();
+			mangeMiette(crumb1);
+        }
+        if (isIntersecting(crumb1Dim, PiouDimAvecAttract)) {
+			console.log("huhu");
+            if (crumb1removed == false) {
+                positionX += Speed;
+                console.log("waitaminute")
+                piou.style.left = positionX + "px";
+            }
+		}
+	}
 	
 	/*if (document.getElementById("porte1")) {
         let porte1Dim = porte1.getBoundingClientRect();
@@ -52,19 +74,9 @@ function update() {
 	}
 
 	*/
-	if (document.getElementById("crumb1")) {
-		let crumb1 = document.getElementById("crumb1");
-		let crumb1Dim = crumb1.getBoundingClientRect();
-		if (isIntersecting(crumb1Dim, NouvPiouDim)) {
-			console.log("boo");
-			removeImage(crumb1);
-			schroum.play();
-			mangeMiette(crumb1);
-		}
-	}
-	
+
 	// Gérer tous les crumbs liés à un mur/porte
-	document.querySelectorAll('img[data-mur], img[data-porte]').forEach(crumb => {
+	/*document.querySelectorAll('img[data-mur], img[data-porte]').forEach(crumb => {
 		if (crumb && crumb.style.display !== "none") {
 			let crumbDim = crumb.getBoundingClientRect();
 			if (isIntersecting(crumbDim, NouvPiouDim)) {
@@ -86,6 +98,17 @@ function update() {
 			}
 		}
 	});
+
+    document.querySelectorAll('img[data-alone="true"]').forEach(crumb => {
+		if (crumb && crumb.style.display !== "none") {
+			let crumbDim = crumb.getBoundingClientRect();
+        if (isIntersecting(crumbDim, NouvPiouDim)) {
+				removeImage(crumb);
+				schroum.play();
+				mangeMiette();
+			}
+		}
+	});*/
 
 	if (manageIntersect("L"))
 		MovingL = false;
