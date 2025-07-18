@@ -39,13 +39,6 @@
 	<script type="text/javascript" src="JavaScripting BL.js"></script>
 	<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
 
-    <script>
-        changerdimensions(100, 100, 'bloc1'); // Exemple de bloc
-        placerBloc(100, 700, 'bloc1'); // Placer le bloc
-        animeMur('bloc1', 2, true, 'topcenter'); // Animer le bloc
-    </script>
-
-
     <!-- Portes animées (2 blocs par porte) -->
     <div class="bloc image" id="porte1_blocG" style="position: absolute;"></div>
     <div class="bloc image" id="porte1_blocD" style="position: absolute;"></div>
@@ -62,7 +55,8 @@
     <img id="crumb_p3_2" data-porte="porte3" style="position: absolute" src="Crumb.png" width="50" height="50">
     <img id="crumb_p3_3" data-porte="porte3" style="position: absolute" src="Crumb.png" width="50" height="50">
 
-    <script>
+    <!--<script>
+        
         // Initialiser les dimensions et la position des blocs APRÈS que les fonctions soient chargées
 
         // --- Placement et animation des portes et crumbs ---
@@ -101,7 +95,15 @@
         document.getElementById('crumb_p3_2').style.top = '1500px';
         document.getElementById('crumb_p3_3').style.left = '1070px';
         document.getElementById('crumb_p3_3').style.top = '1500px';
-    </script>
+        
 
+    #EXEMPLE
+        <script>
+            changerdimensions(100, 100, 'bloc1'); // Exemple de bloc
+            placerBloc(100, 700, 'bloc1'); // Placer le bloc
+            animeMur('bloc1', 2, true, 'topcenter'); // Animer le bloc
+        </script>
+        
+    </script> -->
     </body>
 </html>
