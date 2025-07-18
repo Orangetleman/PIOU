@@ -12,6 +12,7 @@
 			<button class="navigation_button" type="button" onclick="Level_2_button();play_1()"> Level 2 </button>
 			<button class="navigation_button" type="button" onclick="Credits();play_1()"> Credits </button>
 			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
+			<button class="navigation_button" id="toggleMobileBtn" type="button">Activer le mode mobile</button>
 		</div>
 		<div class="flex-container" id="lvl1">
 			<div style="font-size : 5em; color : yellow">The Kitchen</div>
@@ -41,8 +42,18 @@
 		<img id="piou" style="position: absolute" src="piou haut sud.png" width="91.55" height="160.5"></img> 
 
 		<img class="image" id="BDF1" style="position: absolute" src="BDF1.png" width="80" height="80"></img>
-			
-        <div id="videoOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999;">
+
+		<!-- Pad directionnel mobile, caché par défaut -->
+		<div class="directional-pad" id="directionalPad" style="display:none;">
+			<button class="dir-btn up"    data-direction="U">↑</button>
+			<div class="horizontal-row">
+				<button class="dir-btn left"  data-direction="L">←</button>
+				<button class="dir-btn down"  data-direction="D">↓</button>
+				<button class="dir-btn right" data-direction="R">→</button>
+			</div>
+		</div>
+
+		<div id="videoOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999;">
 			<video id="EndingVideo" style="width: 100%; height: 100%; object-fit: cover;" autoplay>
 				<source src="Ending.mp4" type="video/mp4">
 				Your browser does not support the video tag.

@@ -2,18 +2,19 @@
 	<head>
 		<title>Level 1</title>
 		<meta charset="UTF-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/x-icon" href="un.png"/>
 		<link rel="stylesheet" href="CssFDG.css"/>
 		<link rel="stylesheet" href="style_level_map.css"/>
 	</head>
 	<body>
-		<div class="flex-container" id="menu">
-			<button class="navigation_button" type="button" onclick="Home_button();play_1()"> Home </button>
-			<button class="navigation_button" type="button" onclick="Level_2_button();play_1()"> Level 2 </button>
-			<button class="navigation_button" type="button" onclick="Credits();play_1()"> Credits </button>
-			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
-		</div>
+<div class="flex-container" id="menu">
+	<button class="navigation_button" type="button" onclick="Home_button();play_1()"> Home </button>
+	<button class="navigation_button" type="button" onclick="Level_2_button();play_1()"> Level 2 </button>
+	<button class="navigation_button" type="button" onclick="Credits();play_1()"> Credits </button>
+	<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
+	<button class="navigation_button" id="toggleMobileBtn" type="button">Activer le mode mobile</button>
+</div>
 		<div class="flex-container" id="lvl1">
 			<div style="font-size : 5em; color : yellow">The Room</div>
 		</div>
@@ -22,6 +23,17 @@
 		</div>
 		<div id="TimerContainer">
 			<p id="Mon_Timer">Timer: 0 seconds</p>
+		</div>
+
+
+		<!-- Pad directionnel mobile, caché par défaut -->
+		<div class="directional-pad" id="directionalPad" style="display:none;">
+			<button class="dir-btn up"    data-direction="U">↑</button>
+			<div class="horizontal-row">
+				<button class="dir-btn left"  data-direction="L">←</button>
+				<button class="dir-btn down"  data-direction="D">↓</button>
+				<button class="dir-btn right" data-direction="R">→</button>
+			</div>
 		</div>
 
 		<img class="image" id="Mur" style="position: absolute" src="Mur.png" width="40" height="660"></img>

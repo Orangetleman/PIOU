@@ -17,6 +17,40 @@ function Level_3_button() {
 function Home() {
     location.replace("Home.html")
 }
+
+// === Directional Pad Mobile Mode ===
+let mobileMode = localStorage.getItem('mobileMode') === 'true';
+
+function showDirectionalPad(show) {
+    const pad = document.getElementById('directionalPad');
+    if (pad) pad.style.display = show ? 'flex' : 'none';
+}
+
+function updateMobileBtn() {
+    const btn = document.getElementById('toggleMobileBtn');
+    if (btn) btn.textContent = mobileMode ? 'Désactiver le mode mobile' : 'Activer le mode mobile';
+}
+
+function toggleMobileMode() {
+    console.log("Toggling mobile mode. Current state:", mobileMode);
+    mobileMode = !mobileMode;
+    localStorage.setItem('mobileMode', mobileMode);
+    updateMobileBtn();
+    // Affiche le pad directionnel uniquement si présent sur la page
+    if (document.getElementById('directionalPad')) {
+    showDirectionalPad(mobileMode);
+    }
+}
+
+// === Définir HORS de DOMContentLoaded pour qu'elle soit globale ===
+function setMoving(dir, state) {
+    console.log(`Setting moving state for ${dir} to ${state}`);
+    if (dir === 'L') window.MovingL = state;
+    if (dir === 'R') window.MovingR = state;
+    if (dir === 'U') window.MovingU = state;
+    if (dir === 'D') window.MovingD = state;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // Centralize initialization of videoPlayed and videoFinished
     if (localStorage.getItem("videoPlayed") === null) {
@@ -24,11 +58,49 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("videoPlayed initialized to false.");
     }
 
+    // === Initialisation du bouton et du pad ===
+    updateMobileBtn();
+    if (document.getElementById('directionalPad')) {
+        showDirectionalPad(mobileMode);
+        document.querySelectorAll('.dir-btn').forEach(btn => {
+            const dir = btn.dataset.direction;
+            btn.addEventListener('touchstart', e => {
+                e.preventDefault();
+                setMoving(dir, true);
+                btn.classList.add('active');
+            });
+            btn.addEventListener('touchend', e => {
+                e.preventDefault();
+                setMoving(dir, false);
+                btn.classList.remove('active');
+            });
+            btn.addEventListener('mousedown', e => {
+                e.preventDefault();
+                setMoving(dir, true);
+                btn.classList.add('active');
+            });
+            btn.addEventListener('mouseup', e => {
+                e.preventDefault();
+                setMoving(dir, false);
+                btn.classList.remove('active');
+            });
+            btn.addEventListener('mouseleave', e => {
+                e.preventDefault();
+                setMoving(dir, false);
+                btn.classList.remove('active');
+            });
+        });
+    }
+
+    const btn = document.getElementById('toggleMobileBtn');
+    if (btn) {
+        btn.addEventListener('click', toggleMobileMode);
+    }
+
     if (localStorage.getItem("videoFinished") === null) {
         localStorage.setItem("videoFinished", "false");
     }
 
-    // Add a firstRun key to detect the first execution
     if (localStorage.getItem("firstRun") === null) {
         localStorage.setItem("firstRun", "true");
         localStorage.setItem("videoPlayed", "false");
@@ -36,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("First run detected. videoPlayed and videoFinished initialized to false.");
     }
 });
+
 function reset_run() {
     localStorage.setItem("firstRun", null);
     localStorage.setItem("videoPlayed", "false");
@@ -95,7 +168,7 @@ function finishGame() {
     console.log("finishGame called");
     const overlay = document.getElementById("videoOverlay");
     const video = document.getElementById("EndingVideo");
-	console.log("videoFinished:", localStorage.getItem("videoFinished"));
+    console.log("videoFinished:", localStorage.getItem("videoFinished"));
     console.log("firstRun:", localStorage.getItem("firstRun"));
 
     if (localStorage.getItem("videoFinished") !== "true") {
@@ -118,14 +191,14 @@ function finishGame() {
         };
     } else {
         console.log("Video already played, redirecting to Credits.");
-		alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
+        alert("Congratulations! You've eaten " + getCounter() + " crumbs.");
         localStorage.removeItem("counter");
         stopTimerHandler();
         setTimeout(() => {
-			location.replace("Credits.html");
-			}, 100);
-		}
-	}
+            location.replace("Credits.html");
+            }, 100);
+        }
+    }
 
 function updateCounter() {
     const counterElement = document.getElementById("counter");

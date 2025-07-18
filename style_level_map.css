@@ -37,6 +37,54 @@ ol.point {list-style-type: inherit;}
   box-sizing: border-box;
   margin-bottom: 1rem;
 }
+.directional-pad {
+  position: fixed;
+  bottom: 3vw;
+  right: 3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10000;
+  width: 32vw;
+  max-width: 260px;
+  min-width: 120px;
+  gap: 1vw;
+}
+
+.horizontal-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  gap: 1vw;
+}
+
+.dir-btn {
+  background: linear-gradient(135deg, #4f8cff 60%, #1e3c72 100%);
+  color: #fff;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  margin: 0.5vw;
+  width: 9vw;
+  height: 9vw;
+  max-width: 80px;
+  max-height: 80px;
+  min-width: 48px;
+  min-height: 48px;
+  font-size: 2.5em;
+  font-weight: bold;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 1.5px 0 #1e3c72 inset;
+  touch-action: manipulation;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+}
+.dir-btn:active, .dir-btn.active {
+  background: linear-gradient(135deg, #1e3c72 60%, #4f8cff 100%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 0.5px 0 #4f8cff inset;
+  transform: scale(0.93);
+}
 #buttonLvl2 {
   background-color: blue;
   border: none;

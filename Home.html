@@ -9,14 +9,15 @@
 		<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
 	</head>
 	<body class="centre">
-		<div class="flex-container" id="menu">
-			<button class="navigation_button" type="button" onclick="Credits();play_1()"> Credits </button>
-			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
-			<span style="position:relative;display:inline-block;">
-				<button class="reset_button" type="button" onclick="reset_run()" id="resetBtn"> Reset to First Run </button>
-				<img src="checkmark.svg" id="resetSuccessIcon" alt="Succès" style="display:none; position:absolute; right:-40px; top:43%; transform:translateY(-50%); width:32px; height:32px;" />
-			</span>
-		</div>
+<div class="flex-container" id="menu">
+	<button class="navigation_button" type="button" onclick="Credits();play_1()"> Credits </button>
+	<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
+	<span style="position:relative;display:inline-block;">
+		<button class="reset_button" type="button" onclick="reset_run()" id="resetBtn"> Reset to First Run </button>
+		<img src="checkmark.svg" id="resetSuccessIcon" alt="Succès" style="display:none; position:absolute; right:-40px; top:43%; transform:translateY(-50%); width:32px; height:32px;" />
+	</span>
+	<button class="navigation_button" id="toggleMobileBtn" type="button">Activer le mode mobile</button>
+</div>
 		<div class="flex-container" id="lvl1">
 			<div style="font-size : 5em; color : yellow">Home</div>
 		</div>

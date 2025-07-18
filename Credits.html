@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Credits</title>
-		<link rel="icon" type="image/x-icon" href="piou piou droit.png"/>
-		<link rel="stylesheet" href="style_level_map credits.css"/>
+    <head>
+        <title>Credits</title>
+        <link rel="icon" type="image/x-icon" href="piou piou droit.png"/>
+        <link rel="stylesheet" href="style_level_map credits.css"/>
         <link rel="stylesheet" href="CssFDG crédits.css"/>
         <script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
-	</head>
-	<body>
+    </head>
+    <body>
         <div class="flex-container" id="menu">
-			<button class="navigation_button" type="button" onclick="Home();play_1()"> Home </button>
-			<button class="navigation_button" type="button" onclick="Level_1();play_1()"> Level 1 </button>
+            <button class="navigation_button" type="button" onclick="Home();play_1()"> Home </button>
+            <button class="navigation_button" type="button" onclick="Level_1();play_1()"> Level 1 </button>
             <button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
-		</div>
+            <button class="navigation_button" id="toggleMobileBtn" type="button">Activer le mode mobile</button>
+        </div>
         <div class="flex-container" id="lvl1">
-			<div style="font-size : 5em; color : yellow">Credits</div>
-		</div>
+            <div style="font-size : 5em; color : yellow">Credits</div>
+        </div>
         <h1><u>Remerciements</u></h1>
-	    <h2>Piou a été créé par nos deux merveilleux développeurs web, DE ALMEIDA Christophe et PERLES Eva!</h2>
+        <h2>Piou a été créé par nos deux merveilleux développeurs web, DE ALMEIDA Christophe et PERLES Eva!</h2>
         <p>Un grand merci à eux!!!!</p>
         <p style="font-size:17.5px">Mais nous tenons également à remercier ceux qui nous ont aidé et soutenu tout au long du projet:</p>
         <ol class="point">
@@ -55,26 +56,26 @@
         <p id="MerciPiou"> PIOU, NOUS NE T'OUBLIERONS JAMAIS &#x1F497;</p>
 
         <div id="videoOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999;">
-			<video id="OpeningVideo" style="width: 100%; height: 100%; object-fit: cover;" autoplay>
-				<source src="Opening.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
+            <video id="OpeningVideo" style="width: 100%; height: 100%; object-fit: cover;" autoplay>
+                <source src="Opening.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <video id="EndingVideo" style="width: 100%; height: 100%; object-fit: cover;" autoplay>
-				<source src="Ending.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
-		</div>
+                <source src="Ending.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
-	</body>
+    </body>
 
-	<div id="Mon_Timer" style="
+    <div id="Mon_Timer" style="
         display: none;
-	">	
-	</div>
+    ">	
+    </div>
 
-	<script type="text/javascript" src="script.js"></script>
-	<script type="text/javascript">document.addEventListener("DOMContentLoaded", () => {
-		playEndingVideo();
-	});</script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">document.addEventListener("DOMContentLoaded", () => {
+        playEndingVideo();
+    });</script>
 
 </html>

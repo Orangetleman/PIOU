@@ -13,6 +13,16 @@
 			<button class="navigation_button" type="button" onclick="Level_3_button();play_1()"> Level 3 </button>
 			<button class="navigation_button" type="button" onclick="Credits();play_1()"> Credits </button>
 			<button class="stop_button" type="button" onclick="stop_musique()"> Disable music </button>
+			<button class="navigation_button" id="toggleMobileBtn" type="button">Activer le mode mobile</button>
+		</div>
+		<!-- Pad directionnel mobile, caché par défaut -->
+		<div class="directional-pad" id="directionalPad" style="display:none;">
+			<button class="dir-btn up"    data-direction="U">↑</button>
+			<div class="horizontal-row">
+				<button class="dir-btn left"  data-direction="L">←</button>
+				<button class="dir-btn down"  data-direction="D">↓</button>
+				<button class="dir-btn right" data-direction="R">→</button>
+			</div>
 		</div>
 		<div class="flex-container" id="lvl1">
 			<div style="font-size : 5em; color : yellow">The Bathroom</div>
@@ -26,17 +36,17 @@
 		<img class="image" id="Mur" style="position: absolute" src="Mur.png" width="40" height="660"></img>
 		<img class="image" id="Mur2" style="position: absolute" src="Mur.png" width="1865" height="40"></img>
 		<img class="image" id="beignoire" style="position: absolute" src="beignoire.png" width="400" height="250"></img>
-        <img class="image" id="muret" style="position: absolute" src="muret.png" width="1000" height="20"></img>
-        <img class="image" id="lavabo" style="position: absolute" src="lavabo.png" width="400" height="180"></img>
-        <img class="image" id="toilettes" style="position: absolute" src="toilettes.png" width="100" height="150"></img>
-        <img class="image" id="douche" style="position: absolute" src="douche.png" width="225" height="225"></img>
-        <img id="tapis" style="position: absolute" src="tapis.png" width="150" height="200"></img>
+		<img class="image" id="muret" style="position: absolute" src="muret.png" width="1000" height="20"></img>
+		<img class="image" id="lavabo" style="position: absolute" src="lavabo.png" width="400" height="180"></img>
+		<img class="image" id="toilettes" style="position: absolute" src="toilettes.png" width="100" height="150"></img>
+		<img class="image" id="douche" style="position: absolute" src="douche.png" width="225" height="225"></img>
+		<img id="tapis" style="position: absolute" src="tapis.png" width="150" height="200"></img>
 		<img class="image" id="machinewashin" style="position: absolute" src="machinewashin.png" width="150" height="200"></img>
 
 
-        <img id="crumb4" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
-        <img id="crumb2" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
-        <img id="crumb1" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+		<img id="crumb4" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+		<img id="crumb2" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
+		<img id="crumb1" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
 		<img id="crumbpérimé" style="position: absolute" src="Crumb perime.png" width="50" height="50"></img>
 		
 		<img class="porte" id="porte3" style="position: absolute" src="porte3.png" width="278" height="21"></img>

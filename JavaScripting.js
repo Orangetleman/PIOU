@@ -234,6 +234,24 @@ document.addEventListener("keyup", (event) => {
   }
 )
 
+document.querySelectorAll('.dir-btn').forEach(btn => {
+  const dir = btn.dataset.direction;
+  btn.addEventListener('touchstart', () => {
+    if (dir === 'left') MovingL = true;
+    if (dir === 'right') MovingR = true;
+    if (dir === 'up') MovingU = true;
+    if (dir === 'down') MovingD = true;
+	if (dir === 'shift') Speed = 10;
+  });
+  btn.addEventListener('touchend', () => {
+    if (dir === 'left') MovingL = false;
+    if (dir === 'right') MovingR = false;
+    if (dir === 'up') MovingU = false;
+    if (dir === 'down') MovingD = false;
+	if (dir === 'shift') Speed = 5;
+  });
+});
+
 function setPiouDimensions(piou, orientation) {
     // Sauvegarder les dimensions actuelles
     const currentWidth = piou.offsetWidth;

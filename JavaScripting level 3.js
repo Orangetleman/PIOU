@@ -237,25 +237,25 @@ function manageIntersect(direction) {
 
 /*===============================================================*/
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener("keydown" || "touchstart", (event) => {
     const piou = document.getElementById("piou");
 
-    if (event.key === "ArrowLeft") {
+    if (event.key === "ArrowLeft" || event.key === "q") {
         MovingL = true;
         piou.src = "piou haut gauche.png";
         setPiouDimensions(piou, "horizontal");
     }
-    if (event.key === "ArrowRight") {
+    if (event.key === "ArrowRight" || event.key === "d") {
         MovingR = true;
         piou.src = "piou haut droit.png";
         setPiouDimensions(piou, "horizontal");
     }
-    if (event.key === "ArrowUp") {
+    if (event.key === "ArrowUp" || event.key === "z") {
         MovingU = true;
         piou.src = "piou haut nord.png";
         setPiouDimensions(piou, "vertical");
     }
-    if (event.key === "ArrowDown") {
+    if (event.key === "ArrowDown" || event.key === "s") {
         MovingD = true;
         piou.src = "piou haut sud.png";
         setPiouDimensions(piou, "vertical");
@@ -265,7 +265,7 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-document.addEventListener("keyup", (event) => {
+document.addEventListener("keyup" || "touchend", (event) => {
 	if (event.key === "ArrowLeft") {
 		MovingL = false
 	}
@@ -281,8 +281,7 @@ document.addEventListener("keyup", (event) => {
 	if (event.key === "Shift") {
 		Speed = 5
 	}
-  }
-)
+})
 
 function setPiouDimensions(piou, orientation) {
     // Sauvegarder les dimensions actuelles
