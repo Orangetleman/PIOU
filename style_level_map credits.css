@@ -24,7 +24,7 @@ ol.point {list-style-type: inherit;}
   --couleur-fond: lightgreen;
   --couleur-bord: green;
 }
-/*.bloc {
+.bloc {
   width: var(--taille);
   height: var(--taille);
   background:
@@ -35,7 +35,7 @@ ol.point {list-style-type: inherit;}
     var(--couleur-fond);
   box-sizing: border-box;
   margin-bottom: 1rem;
-}*/
+}
 #buttonLvl2 {
   background-color: blue;
   border: none;
@@ -108,11 +108,6 @@ ol.point {list-style-type: inherit;}
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s; /* Smooth color change and hover effect */
 }
-.navigation_button:hover {
-  background-color: lightskyblue;
-  font-weight: bold;
-  transform: scale(1.05); /* Slightly enlarge on hover */
-}
 .level_button {
   font-size: 1.5rem; /* Increase font size */
   padding: 15px 30px; /* Increase padding for larger buttons */
@@ -123,10 +118,6 @@ ol.point {list-style-type: inherit;}
   color: white;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s; /* Smooth color change and hover effect */
-}
-.level_button:hover {
-  background-color: #666;
-  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 .stop_button {
   font-size: 1.5rem; /* Increase font size */
@@ -139,10 +130,38 @@ ol.point {list-style-type: inherit;}
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s; /* Smooth color change and hover effect */
 }
+.reset_button {
+  font-size: 1.5rem; /* Increase font size */
+  padding: 10px 25px; /* Increase padding for larger buttons */
+  margin: 10px;
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  background-color: blue;
+  color: rgb(255, 153, 0);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth color change and hover effect */
+}
+
+/* changement d'etat lors du survol des boutons */
+
+.level_button:hover {
+  background-color: #666;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+.navigation_button:hover {
+  background-color: lightskyblue;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+.reset_button:hover {
+  background-color: rgba(104, 249, 160, 0.774);
+  font-weight: bold;
+  transform: scale(1.05);
+}
 .stop_button:hover {
   background-color: rgb(208, 104, 249);
   font-weight: bold;
-  transform: scale(1.05); /* Slightly enlarge on hover */
+  transform: scale(1.05);
 }
 .hypertext:hover {
   color: green;
