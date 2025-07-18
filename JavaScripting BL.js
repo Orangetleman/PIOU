@@ -35,6 +35,11 @@ function update() {
 	let piouDim = piou.getBoundingClientRect();
 	let NouvPiouDim = { left: piouDim.left, top:piouDim.top, right:piouDim.right, bottom:piouDim.bottom, width: piouDim.width, height: piouDim.height }; 
     let PiouDimAvecAttract = { left: piouDim.left - 500, top:piouDim.top- 500, right:piouDim.right+ 500, bottom:piouDim.bottom+ 500 };
+    
+    let PiouAttractLeft = { left: PiouDimAvecAttract.left, top: PiouDimAvecAttract.top, right: NouvPiouDim.left, bottom: PiouDimAvecAttract.bottom};
+    let PiouAttractRight = {left: NouvPiouDim.right,top: PiouDimAvecAttract.top,right: PiouDimAvecAttract.right,bottom: PiouDimAvecAttract.bottom};
+    let PiouAttractTop = {left: PiouDimAvecAttract.left,top: PiouDimAvecAttract.top,right: PiouDimAvecAttract.right,bottom: NouvPiouDim.top};
+    let PiouAttractBottom = {left: PiouDimAvecAttract.left,top: NouvPiouDim.bottom,right: PiouDimAvecAttract.right,bottom: PiouDimAvecAttract.bottom};
 
 	if (document.getElementById("crumb1")) {
 		let crumb1 = document.getElementById("crumb1");
@@ -46,12 +51,36 @@ function update() {
 			schroum.play();
 			mangeMiette(crumb1);
         }
-        if (isIntersecting(crumb1Dim, PiouDimAvecAttract)) {
+        if (isIntersecting(crumb1Dim, PiouAttractRight)) {
 			console.log("huhu");
             if (crumb1removed == false) {
                 positionX += Speed;
                 console.log("waitaminute")
                 piou.style.left = positionX + "px";
+            }
+		}
+        if (isIntersecting(crumb1Dim, PiouAttractLeft)) {
+			console.log("huhu");
+            if (crumb1removed == false) {
+                positionX -= Speed;
+                console.log("waitaminute")
+                piou.style.left = positionX + "px";
+            }
+		}
+        if (isIntersecting(crumb1Dim, PiouAttractTop)) {
+			console.log("huhu");
+            if (crumb1removed == false) {
+                positionY -= Speed;
+                console.log("waitaminute")
+                piou.style.top = positionY + "px";
+            }
+		}
+        if (isIntersecting(crumb1Dim, PiouAttractBottom)) {
+			console.log("huhu");
+            if (crumb1removed == false) {
+                positionY += Speed;
+                console.log("waitaminute")
+                piou.style.top = positionY + "px";
             }
 		}
 	}
