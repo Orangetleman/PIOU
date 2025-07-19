@@ -29,15 +29,35 @@
     <!-- Crumb exemple -->
     <img id="crumb1" data-alone="true" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
 
+    <img class="image" id="m30-300/1863-300" style="position: absolute" src="Mur.png" width="1863" height="40"></img>
+
     <!-- Bloc exemple -->
     <!--<div class="bloc image" id="bloc1" style="position: absolute;"></div>-->
 
     <img id="piou" style="position: absolute" src="piou haut droit.png" width="160.5" height="91.5"></img>
 
     <script type="text/javascript" src="script.js"></script>
-	<script type="text/javascript" src="JavaScripting BL.js"></script>
+	
 	<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
 
+
+
+
+    <script>
+        function init(){
+        let crumb1 = document.getElementById("crumb1");
+        crumb1.style.left = "1000px"; // Place-le loin de Piou au départ
+        crumb1.style.top = "500px";
+        let piou = document.getElementById("piou");
+        piou.style.left = "400px";
+        piou.style.top = "700px";
+        let m1 = document.getElementById("m30-300/1863-300");
+        m1.style.left = "30";
+        m1.style.top = "300";
+        }
+    </script>
+
+    <script type="text/javascript" src="JavaScripting BL.js"></script>
     <!--
     //Portes animées (2 blocs par porte) 
     <div class="bloc image" id="porte1_blocG" style="position: absolute;"></div>

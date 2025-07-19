@@ -21,15 +21,6 @@ const crumbsMangesParMur = {
     porte3: 0
 };
 
-function init(){
-    let crumb1 = document.getElementById("crumb1");
-    crumb1.style.left = "1000px"; // Place-le loin de Piou au départ
-    crumb1.style.top = "500px";
-    let piou = document.getElementById("piou");
-    piou.style.left = "400px";
-    piou.style.top = "700px";
-}
-
 function update() {
 	let piou = document.getElementById("piou")
 	let piouDim = piou.getBoundingClientRect();
