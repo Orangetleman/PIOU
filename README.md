@@ -13,7 +13,7 @@ MAJ 1.1 :
         - 1 seule fois les cinématiques --------------------------------------------------------------------------------------------------- Done
         - Ajouter des boutons pour se déplacer sur tel (mode tel) ------------------------------------------------------------------------- en cours
         - icônes des onglets sous licences (lvl bonus) ------------------------------------------------------------------------------------ Done
-        
+
     Nouveau lvl :
         - Bonus level boutton (qui s'affiche dans la barre du haut à la fin) --------------------------------------------------------------
         - layout des murs ----------------------------------------------------------------------------------------------------------------- 
@@ -25,3 +25,4 @@ MAJ 1.1 :
         - Opening (Ending?) --------------------------------------------------------------------------------------------------------------- DONE
         - texte explicatif drogue (défilant?) ---------------------------------------------------------------------------------------------
 
+eva il faut que tu places tt les murs selon le plan, +30 pour le x a chaque fois, oublie pas class image
