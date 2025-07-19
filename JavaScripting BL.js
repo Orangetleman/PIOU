@@ -34,7 +34,7 @@ function update() {
 	let piou = document.getElementById("piou")
 	let piouDim = piou.getBoundingClientRect();
 	let NouvPiouDim = { left: piouDim.left, top:piouDim.top, right:piouDim.right, bottom:piouDim.bottom, width: piouDim.width, height: piouDim.height }; 
-    let a = 200
+    let a = 100
     let PiouDimAvecAttract = { left: piouDim.left - a, top:piouDim.top- a, right:piouDim.right+ a, bottom:piouDim.bottom+ a };
     
     let PiouAttractLeft = { left: PiouDimAvecAttract.left, top: PiouDimAvecAttract.top, right: NouvPiouDim.left, bottom: PiouDimAvecAttract.bottom};
