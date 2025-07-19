@@ -52,9 +52,9 @@ function init(){
 	let Mur = document.getElementById("Mur")
 	Mur.style.left = "1865px"
 	Mur.style.top = "300px"
-		let Mur2 = document.getElementById("Mur2")
-		Mur2.style.left = "10px"
-		Mur2.style.top = "920px"
+	let Mur2 = document.getElementById("Mur2")
+	Mur2.style.left = "10px"
+	Mur2.style.top = "920px"
 	}
 
 function update() {
