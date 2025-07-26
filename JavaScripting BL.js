@@ -119,6 +119,34 @@ function update() {
             Page_1()
         }
     }
+    if (document.getElementById("p1d")) {
+        let p1dDim = p1d.getBoundingClientRect();
+        if (isIntersecting(p1dDim, NouvPiouDim)) {
+            console.log("p1d");
+            Page_1()
+        }
+    }
+    if (document.getElementById("p2d")) {
+        let p2dDim = p2d.getBoundingClientRect();
+        if (isIntersecting(p2dDim, NouvPiouDim)) {
+            console.log("p2d");
+            Page_1()
+        }
+    }
+    if (document.getElementById("p5")) {
+        let p5Dim = p5.getBoundingClientRect();
+        if (isIntersecting(p5Dim, NouvPiouDim)) {
+            console.log("p5");
+            Page_4()
+        }
+    }
+    if (document.getElementById("p6")) {
+        let p6Dim = p6.getBoundingClientRect();
+        if (isIntersecting(p6Dim, NouvPiouDim)) {
+            console.log("p6");
+            Page_4()
+        }
+    }
 	
 	/*if (document.getElementById("porte1")) {
         let porte1Dim = porte1.getBoundingClientRect();
