@@ -1,7 +1,7 @@
-let MovingL = false
-let MovingR = false
-let MovingU = false
-let MovingD = false
+window.MovingL = false
+window.MovingR = false
+window.MovingU = false
+window.MovingD = false
 let Speed = 5
 let positionX = 60
 let positionY = 350
