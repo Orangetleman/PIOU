@@ -81,7 +81,7 @@ function update() {
         let p1Dim = p1.getBoundingClientRect();
         if (isIntersecting(p1Dim, NouvPiouDim)) {
             console.log("p1");
-            Level_3()
+            Page_3()
         }
     }
 
@@ -90,7 +90,7 @@ function update() {
         let p2Dim = p2.getBoundingClientRect();
         if (isIntersecting(p2Dim, NouvPiouDim)) {
             console.log("p2");
-            Level_3()
+            Page_3()
         }
     }
 
@@ -99,7 +99,7 @@ function update() {
         let p3Dim = p3.getBoundingClientRect();
         if (isIntersecting(p3Dim, NouvPiouDim)) {
             console.log("p3");
-            Level_3()
+            Page_2()
         }
     }
 
@@ -107,7 +107,7 @@ function update() {
         let p4Dim = p4.getBoundingClientRect();
         if (isIntersecting(p4Dim, NouvPiouDim)) {
             console.log("p4");
-            Level_3()
+            Page_2()
         }
     }
 
@@ -116,7 +116,7 @@ function update() {
         let p3bDim = p3b.getBoundingClientRect();
         if (isIntersecting(p3bDim, NouvPiouDim)) {
             console.log("p3b");
-            Level_3()
+            Page_1()
         }
     }
 	
@@ -344,6 +344,18 @@ function Level_2() {
 }
 function Level_3() {
     location.replace("Level 3.html")
+}
+function Page_1() {
+    location.replace("BL page1.html")
+}
+function Page_2() {
+    location.replace("BL page2.html")
+}
+function Page_3() {
+    location.replace("BL page3.html")
+}
+function Page_4() {
+    location.replace("BL page4.html")
 }
 
 function getMurFromCrumb(crumb) {
