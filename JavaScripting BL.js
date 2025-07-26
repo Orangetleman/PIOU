@@ -75,6 +75,50 @@ function update() {
             }
 	    }
 	});
+
+
+    if (document.getElementById("p1")) {
+        let p1Dim = p1.getBoundingClientRect();
+        if (isIntersecting(p1Dim, NouvPiouDim)) {
+            console.log("p1");
+            Level_3()
+        }
+    }
+
+
+    if (document.getElementById("p2")) {
+        let p2Dim = p2.getBoundingClientRect();
+        if (isIntersecting(p2Dim, NouvPiouDim)) {
+            console.log("p2");
+            Level_3()
+        }
+    }
+
+
+    if (document.getElementById("p3")) {
+        let p3Dim = p3.getBoundingClientRect();
+        if (isIntersecting(p3Dim, NouvPiouDim)) {
+            console.log("p3");
+            Level_3()
+        }
+    }
+
+    if (document.getElementById("p4")) {
+        let p4Dim = p4.getBoundingClientRect();
+        if (isIntersecting(p4Dim, NouvPiouDim)) {
+            console.log("p4");
+            Level_3()
+        }
+    }
+
+    
+    if (document.getElementById("p3b")) {
+        let p3bDim = p3b.getBoundingClientRect();
+        if (isIntersecting(p3bDim, NouvPiouDim)) {
+            console.log("p3b");
+            Level_3()
+        }
+    }
 	
 	/*if (document.getElementById("porte1")) {
         let porte1Dim = porte1.getBoundingClientRect();
