@@ -28,8 +28,8 @@ function init(){
     crumb1.style.left = "320px"
     crumb1.style.top = "770px"
     let crumb2 = document.getElementById("crumb2")
-    crumb2.style.left = "1800px"
-    crumb2.style.top = "850px"
+    crumb2.style.left = "1750px"
+    crumb2.style.top = "800px"
     let crumb4 = document.getElementById("crumb4")
     crumb4.style.left = "780px"
     crumb4.style.top = "300px"
