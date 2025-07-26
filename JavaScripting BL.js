@@ -33,49 +33,48 @@ function update() {
     let PiouAttractTop = {left: PiouDimAvecAttract.left,top: PiouDimAvecAttract.top,right: PiouDimAvecAttract.right,bottom: NouvPiouDim.top};
     let PiouAttractBottom = {left: PiouDimAvecAttract.left,top: NouvPiouDim.bottom,right: PiouDimAvecAttract.right,bottom: PiouDimAvecAttract.bottom};
 
-	if (document.getElementById("crumb1")) {
-		let crumb1 = document.getElementById("crumb1");
-		let crumb1Dim = crumb1.getBoundingClientRect();
-		if (isIntersecting(crumb1Dim, NouvPiouDim)) {
-			console.log("boo");
-			removeImage(crumb1);
-            crumb1removed = true
-			schroum.play();
-			mangeMiette(crumb1);
-        }
-        if (isIntersecting(crumb1Dim, PiouAttractRight)) {
-			console.log("huhu");
-            if (crumb1removed == false) {
-                positionX += Speed;
-                console.log("waitaminute")
-                piou.style.left = positionX + "px";
+    document.querySelectorAll('img[data-alone="true"]').forEach(crumb => {
+        if (crumb && crumb.style.display !== "none") {
+            let crumbDim = crumb.getBoundingClientRect();
+            if (isIntersecting(crumbDim, NouvPiouDim)) {
+                removeImage(crumb);
+                schroum.play();
+                mangeMiette();
             }
-		}
-        if (isIntersecting(crumb1Dim, PiouAttractLeft)) {
-			console.log("huhu");
-            if (crumb1removed == false) {
-                positionX -= Speed;
-                console.log("waitaminute")
-                piou.style.left = positionX + "px";
+            if (isIntersecting(crumbDim, PiouAttractRight)) {
+                console.log("huhu");
+                if (crumb1removed == false) {
+                    positionX += Speed;
+                    console.log("waitaminute")
+                    piou.style.left = positionX + "px";
+                }
             }
-		}
-        if (isIntersecting(crumb1Dim, PiouAttractTop)) {
-			console.log("huhu");
-            if (crumb1removed == false) {
-                positionY -= Speed;
-                console.log("waitaminute")
-                piou.style.top = positionY + "px";
+            if (isIntersecting(crumbDim, PiouAttractLeft)) {
+                console.log("huhu");
+                if (crumb1removed == false) {
+                    positionX -= Speed;
+                    console.log("waitaminute")
+                    piou.style.left = positionX + "px";
+                }
             }
-		}
-        if (isIntersecting(crumb1Dim, PiouAttractBottom)) {
-			console.log("huhu");
-            if (crumb1removed == false) {
-                positionY += Speed;
-                console.log("waitaminute")
-                piou.style.top = positionY + "px";
+            if (isIntersecting(crumbDim, PiouAttractTop)) {
+                console.log("huhu");
+                if (crumb1removed == false) {
+                    positionY -= Speed;
+                    console.log("waitaminute")
+                    piou.style.top = positionY + "px";
+                }
             }
-		}
-	}
+            if (isIntersecting(crumbDim, PiouAttractBottom)) {
+                console.log("huhu");
+                if (crumb1removed == false) {
+                    positionY += Speed;
+                    console.log("waitaminute")
+                    piou.style.top = positionY + "px";
+                }
+            }
+	    }
+	});
 	
 	/*if (document.getElementById("porte1")) {
         let porte1Dim = porte1.getBoundingClientRect();
