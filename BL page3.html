@@ -26,84 +26,47 @@
 			<p id="Mon_Timer">Timer: 0 seconds</p>
 		</div>
 
-    <!-- Crumb exemple -->
     <img id="crumb1" data-alone="true" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
 
-    <!-- Bloc exemple -->
-    <!--<div class="bloc image" id="bloc1" style="position: absolute;"></div>-->
+    <!--<img class="image" id="m5" style="position: absolute" src="Mur.png" width="310.5" height="40"></img>-->
 
-    <img id="piou" style="position: absolute" src="piou haut droit.png" width="160.5" height="91.5"></img>
+    <!--<img class="image" id="p1" style="position: absolute" src="Passages.png" width="40" height="155"></img>-->
+
+
+    <!--<div class="bloc image" id="porte1_blocD" style="position: absolute;"></div>-->
+
+    <img id="piou" style="position: absolute" src="piou haut droit.png" width="80" height="45.5"></img>
+
+
 
     <script type="text/javascript" src="script.js"></script>
-	<script type="text/javascript" src="JavaScripting BL.js"></script>
 	<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
 
-    <!--
-    //Portes animées (2 blocs par porte) 
-    <div class="bloc image" id="porte1_blocG" style="position: absolute;"></div>
-    <div class="bloc image" id="porte1_blocD" style="position: absolute;"></div>
-    <div class="bloc image" id="porte2_blocG" style="position: absolute;"></div>
-    <div class="bloc image" id="porte2_blocD" style="position: absolute;"></div>
-    <div class="bloc image" id="porte3_blocG" style="position: absolute;"></div>
-    <div class="bloc image" id="porte3_blocD" style="position: absolute;"></div>
-
-    //Crumbs derrière chaque porte
-    <img id="crumb_p1_1" data-porte="porte1" style="position: absolute" src="Crumb.png" width="50" height="50">
-    <img id="crumb_p2_1" data-porte="porte2" style="position: absolute" src="Crumb.png" width="50" height="50">
-    <img id="crumb_p2_2" data-porte="porte2" style="position: absolute" src="Crumb.png" width="50" height="50">
-    <img id="crumb_p3_1" data-porte="porte3" style="position: absolute" src="Crumb.png" width="50" height="50">
-    <img id="crumb_p3_2" data-porte="porte3" style="position: absolute" src="Crumb.png" width="50" height="50">
-    <img id="crumb_p3_3" data-porte="porte3" style="position: absolute" src="Crumb.png" width="50" height="50">
 
     <script>
-        
-        // Initialiser les dimensions et la position des blocs APRÈS que les fonctions soient chargées
+        function init(){
+        let crumb1 = document.getElementById("crumb1");
+        crumb1.style.left = "699px"; // Place-le loin de Piou au départ
+        crumb1.style.top = "812px";
+        let piou = document.getElementById("piou");
+        piou.style.left = "400px";
+        piou.style.top = "377px";
+        }
+    </script>
 
-        // --- Placement et animation des portes et crumbs ---
+    <script type="text/javascript" src="JavaScripting BL.js"></script>
+
+    <!--<script>
+
         // Porte 1 (1 crumb)
-        changerdimensions(120, 125, 'porte1_blocG');
-        changerdimensions(120, 125, 'porte1_blocD');
-        placerBloc(200, 1000, 'porte1_blocG'); // gauche
-        placerBloc(340, 1000, 'porte1_blocD'); // droite
-        animeMur('porte1_blocD', 2, true, 'centerright');
-        animeMur('porte1_blocG', 2, true, 'centerleft');
-        document.getElementById('crumb_p1_1').style.left = '270px';
-        document.getElementById('crumb_p1_1').style.top = '1500px';
-
-        // Porte 2 (2 crumbs)
-        changerdimensions(120, 125, 'porte2_blocG');
-        changerdimensions(120, 125, 'porte2_blocD');
-        placerBloc(600, 1000, 'porte2_blocG');
-        placerBloc(740, 1000, 'porte2_blocD');
-        animeMur('porte2_blocD', 2, true, 'centerright');
-        animeMur('porte2_blocG', 2, true, 'centerleft');
-        document.getElementById('crumb_p2_1').style.left = '670px';
-        document.getElementById('crumb_p2_1').style.top = '1500px';
-        document.getElementById('crumb_p2_2').style.left = '690px';
-        document.getElementById('crumb_p2_2').style.top = '1500px';
-
-        // Porte 3 (3 crumbs)
-        changerdimensions(120, 125, 'porte3_blocG');
-        changerdimensions(120, 125, 'porte3_blocD');
-        placerBloc(1000, 1000, 'porte3_blocG');
-        placerBloc(1140, 1000, 'porte3_blocD');
-        animeMur('porte3_blocD', 2, true, 'centerright');
-        animeMur('porte3_blocG', 2, true, 'centerleft');
-        document.getElementById('crumb_p3_1').style.left = '1070px';
-        document.getElementById('crumb_p3_1').style.top = '1500px';
-        document.getElementById('crumb_p3_2').style.left = '1090px';
-        document.getElementById('crumb_p3_2').style.top = '1500px';
-        document.getElementById('crumb_p3_3').style.left = '1070px';
-        document.getElementById('crumb_p3_3').style.top = '1500px';
+    
+        changerdimensions(115, 40, 'porte1_blocD');
+    
+        placerBloc(1520.5, 782, 'porte1_blocD'); // droite
         
+        animeMur('porte1_blocD', 2, true, 'topcenter');  
 
-    #EXEMPLE
-        <script>
-            changerdimensions(100, 100, 'bloc1'); // Exemple de bloc
-            placerBloc(100, 700, 'bloc1'); // Placer le bloc
-            animeMur('bloc1', 2, true, 'topcenter'); // Animer le bloc
-        </script>
-        
-    </script> -->
+    </script>-->
+
     </body>
 </html>

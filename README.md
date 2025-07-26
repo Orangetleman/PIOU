@@ -29,3 +29,4 @@ MAJ 1.1 :
 rajouter murs qui bougent simplement 1 fois
 carré autour de piou pour désactiver l'attirance
 écraser bec de piou lorsqe mur pour quil soit carré
+var a_bougé = false (javascripting BL)
