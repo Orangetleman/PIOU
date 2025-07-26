@@ -161,7 +161,7 @@ function Credits() {
 }
 
 function Level_bonus_button() {
-    location.replace("bonus level.html")
+    location.replace("BL page1.html")
 }
 
 function finishGame() {

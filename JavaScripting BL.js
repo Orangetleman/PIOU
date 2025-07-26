@@ -4,9 +4,9 @@ let MovingU = false
 let MovingD = false
 let Speed = 5
 let positionX = 60
-let positionY = 500
+let positionY = 350
 let schroum = new Audio("schroum.m4a")
-let dim_piou = { width: 536/5*1.5, height: 305/5*1.5 };
+let dim_piou = { width: 536/5*0.75, height: 305/5*0.75 };
 let crumb1removed = false
 
 // --- Déclaration des compteurs de crumbs mangés derrière chaque mur ---

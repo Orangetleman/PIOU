@@ -29,12 +29,31 @@
     <!-- Crumb exemple -->
     <img id="crumb1" data-alone="true" style="position: absolute" src="Crumb.png" width="50" height="50"></img>
 
-    <img class="image" id="m30-300/1863-300" style="position: absolute" src="Mur.png" width="1863" height="40"></img>
+    <img class="image" id="m8-277/1871-277" style="position: absolute" src="Mur.png" width="1863" height="40"></img>
+    <img class="image" id="m8-432/939.5-432" style="position: absolute" src="Mur.png" width="931.5" height="40"></img>
+    <img class="image" id="m318.5-587/1250-587" style="position: absolute" src="Mur.png" width="931.5" height="40"></img>
+    <img class="image" id="m629-742/1250-742" style="position: absolute" src="Mur.png" width="621" height="40"></img>
+    <img class="image" id="m5" style="position: absolute" src="Mur.png" width="310.5" height="40"></img>
+    <img class="image" id="m6" style="position: absolute" src="Mur.png" width="1242" height="40"></img>
+    <img class="image" id="m7" style="position: absolute" src="Mur.png" width="40" height="310"></img>
+    <img class="image" id="m8" style="position: absolute" src="Mur.png" width="40" height="155"></img>
+    <img class="image" id="m9" style="position: absolute" src="Mur.png" width="40" height="350"></img>
+    <img class="image" id="m10" style="position: absolute" src="Mur.png" width="40" height="350"></img>
+    <img class="image" id="m11" style="position: absolute" src="Mur.png" width="40" height="155"></img>
+    <img class="image" id="m12" style="position: absolute" src="Mur.png" width="40" height="465"></img>
+
+    <img class="image" id="p1" style="position: absolute" src="Passages.png" width="40" height="155"></img>
+    <img class="image" id="p2" style="position: absolute" src="Passages.png" width="40" height="155"></img>
+    <img class="image" id="p3" style="position: absolute" src="Passages.png" width="310.5" height="40"></img>
+
+    <div class="bloc image" id="porte1_blocD" style="position: absolute;"></div>
+
+
 
     <!-- Bloc exemple -->
     <!--<div class="bloc image" id="bloc1" style="position: absolute;"></div>-->
 
-    <img id="piou" style="position: absolute" src="piou haut droit.png" width="160.5" height="91.5"></img>
+    <img id="piou" style="position: absolute" src="piou haut droit.png" width="80" height="45.5"></img>
 
     <script type="text/javascript" src="script.js"></script>
 	
@@ -46,18 +65,72 @@
     <script>
         function init(){
         let crumb1 = document.getElementById("crumb1");
-        crumb1.style.left = "1000px"; // Place-le loin de Piou au départ
-        crumb1.style.top = "500px";
+        crumb1.style.left = "699px"; // Place-le loin de Piou au départ
+        crumb1.style.top = "812px";
         let piou = document.getElementById("piou");
         piou.style.left = "400px";
-        piou.style.top = "700px";
-        let m1 = document.getElementById("m30-300/1863-300");
-        m1.style.left = "30";
-        m1.style.top = "300";
+        piou.style.top = "377px";
+        let m1 = document.getElementById("m8-277/1871-277");
+        m1.style.left = "8px";
+        m1.style.top = "277px";
+        let m2 = document.getElementById("m8-432/939.5-432");
+        m2.style.left = "8px";
+        m2.style.top = "432px";
+        let m3 = document.getElementById("m318.5-587/1250-587");
+        m3.style.left = "318.5px";
+        m3.style.top = "587px";
+        let m4 = document.getElementById("m629-742/1250-742");
+        m4.style.left = "629px";
+        m4.style.top = "742px";
+        let m5 = document.getElementById("m5");
+        m5.style.left = "1560.5px";
+        m5.style.top = "742px";
+        let m6 = document.getElementById("m6");
+        m6.style.left = "629px";
+        m6.style.top = "897px";
+        let m7 = document.getElementById("m7");
+        m7.style.left = "1831px";
+        m7.style.top = "317px";
+        let m8 = document.getElementById("m8");
+        m8.style.left = "1210px";
+        m8.style.top = "432px";
+        let m9 = document.getElementById("m9");
+        m9.style.left = "1520.5px";
+        m9.style.top = "432px";
+        let m10 = document.getElementById("m10");
+        m10.style.left = "318.5px";
+        m10.style.top = "587px";
+        let m11 = document.getElementById("m11");
+        m11.style.left = "629px";
+        m11.style.top = "742px";
+        let m12 = document.getElementById("m12");
+        m12.style.left = "8px";
+        m12.style.top = "472px";
+        let p1 = document.getElementById("p1");
+        p1.style.left = "1831px";
+        p1.style.top = "587px";
+        let p2 = document.getElementById("p2");
+        p2.style.left = "1831px";
+        p2.style.top = "742px";
+        let p3 = document.getElementById("p3");
+        p3.style.left = "8px";
+        p3.style.top = "897px";
         }
     </script>
 
     <script type="text/javascript" src="JavaScripting BL.js"></script>
+
+    <script>
+
+        // Porte 1 (1 crumb)
+    
+        changerdimensions(115, 40, 'porte1_blocD');
+    
+        placerBloc(1520.5, 782, 'porte1_blocD'); // droite
+        
+        animeMur('porte1_blocD', 2, true, 'topcenter');  
+
+    </script>
     <!--
     //Portes animées (2 blocs par porte) 
     <div class="bloc image" id="porte1_blocG" style="position: absolute;"></div>

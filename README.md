@@ -25,4 +25,7 @@ MAJ 1.1 :
         - Opening (Ending?) --------------------------------------------------------------------------------------------------------------- DONE
         - texte explicatif drogue (défilant?) ---------------------------------------------------------------------------------------------
 
-eva il faut que tu places tt les murs selon le plan, +30 pour le x a chaque fois, oublie pas class image
++8 (x) +277 (y) => murs
+rajouter murs qui bougent simplement 1 fois
+carré autour de piou pour désactiver l'attirance
+écraser bec de piou lorsqe mur pour quil soit carré
