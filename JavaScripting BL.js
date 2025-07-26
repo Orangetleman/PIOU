@@ -147,6 +147,49 @@ function update() {
             Page_4()
         }
     }
+
+    if (document.getElementById("p5b")) {
+        let p5bDim = p5b.getBoundingClientRect();
+        if (isIntersecting(p5bDim, NouvPiouDim)) {
+            console.log("p5b");
+            Page_3()
+        }
+    }
+    if (document.getElementById("p6b")) {
+        let p6bDim = p6b.getBoundingClientRect();
+        if (isIntersecting(p6bDim, NouvPiouDim)) {
+            console.log("p6b");
+            Page_3()
+        }
+    }
+    if (document.getElementById("p7d")) {
+        let p7dDim = p7d.getBoundingClientRect();
+        if (isIntersecting(p7dDim, NouvPiouDim)) {
+            console.log("p7d");
+            Page_2()
+        }
+    }
+    if (document.getElementById("p8d")) {
+        let p8dDim = p8d.getBoundingClientRect();
+        if (isIntersecting(p8dDim, NouvPiouDim)) {
+            console.log("p8d");
+            Page_2()
+        }
+    }
+    if (document.getElementById("p9d")) {
+        let p9dDim = p9d.getBoundingClientRect();
+        if (isIntersecting(p9dDim, NouvPiouDim)) {
+            console.log("p9d");
+            Page_2()
+        }
+    }   
+    if (document.getElementById("p10d")) {
+        let p10dDim = p10d.getBoundingClientRect();
+        if (isIntersecting(p10dDim, NouvPiouDim)) {
+            console.log("p10d");
+            Page_2()
+        }
+    }
 	
 	/*if (document.getElementById("porte1")) {
         let porte1Dim = porte1.getBoundingClientRect();
