@@ -45,10 +45,30 @@ function toggleMobileMode() {
 // === Définir HORS de DOMContentLoaded pour qu'elle soit globale ===
 function setMoving(dir, state) {
     console.log(`Setting moving state for ${dir} to ${state}`);
-    if (dir === 'L') window.MovingL = state;
-    if (dir === 'R') window.MovingR = state;
-    if (dir === 'U') window.MovingU = state;
-    if (dir === 'D') window.MovingD = state;
+    if (dir === 'L') {
+        window.MovingL = state;
+        piou.src = "piou haut gauche.png";
+        setPiouDimensions(piou, "horizontal");
+        play_1();
+    }
+    if (dir === 'R') {
+        window.MovingR = state;
+        piou.src = "piou haut droit.png";
+        setPiouDimensions(piou, "horizontal");
+        play_1();
+    }
+    if (dir === 'U') {
+        window.MovingU = state;
+        piou.src = "piou haut nord.png";
+        setPiouDimensions(piou, "vertical");
+        play_1();
+    }
+    if (dir === 'D') {
+        window.MovingD = state;
+        piou.src = "piou haut sud.png";
+        setPiouDimensions(piou, "vertical");
+        play_1();
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
