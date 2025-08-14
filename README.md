@@ -15,6 +15,7 @@ MAJ 1.1 :
         - Ajouter des boutons pour se déplacer sur tel (mode tel) ------------------------------------------------------------------------- en cours
         - icônes des onglets sous licences (lvl bonus) ------------------------------------------------------------------------------------ Done
         - mode dev ------------------------------------------------------------------------------------------------------------------------
+        - FAIRE UNE PUB DE PIOU
 
     Nouveau lvl :
         - Bonus level boutton (qui s'affiche dans la barre du haut à la fin) -------------------------------------------------------------- à bouger
