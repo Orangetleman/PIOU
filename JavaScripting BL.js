@@ -5,6 +5,7 @@ window.MovingD = false
 let Speed = 5
 let positionX = 60
 let positionY = 350
+let tp1 = false
 let schroum = new Audio("schroum.m4a")
 let dim_piou = { width: 536/5*0.75, height: 305/5*0.75 };
 let crumb1removed = false
@@ -81,7 +82,12 @@ function update() {
         let p1Dim = p1.getBoundingClientRect();
         if (isIntersecting(p1Dim, NouvPiouDim)) {
             console.log("p1");
+            tp1 = true
             Page_3()
+            if (tp1 == true) {
+                positionX = 600
+                positionY = 500
+            }
         }
     }
 
