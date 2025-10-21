@@ -5,7 +5,6 @@ window.MovingD = false
 let Speed = 5
 let positionX = 60
 let positionY = 350
-let tp1 = false
 let schroum = new Audio("schroum.m4a")
 let dim_piou = { width: 536/5*0.75, height: 305/5*0.75 };
 let crumb1removed = false
@@ -22,7 +21,13 @@ const crumbsMangesParMur = {
     porte3: 0
 };
 
+let tp1 = false
+
 function update() {
+    if (tp1 == true) {
+                positionX = 600
+                positionY = 500
+            }
 	let piou = document.getElementById("piou")
 	let piouDim = piou.getBoundingClientRect();
 	let NouvPiouDim = { left: piouDim.left, top:piouDim.top, right:piouDim.right, bottom:piouDim.bottom, width: piouDim.width, height: piouDim.height }; 
@@ -84,10 +89,6 @@ function update() {
             console.log("p1");
             tp1 = true
             Page_3()
-            if (tp1 == true) {
-                positionX = 600
-                positionY = 500
-            }
         }
     }
 
