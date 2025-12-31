@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="CssFDG.css"/>
         <link rel="stylesheet" href="style_level_map.css"/>
     </head>
-    <body>
+    <body id="game">
         <div class="flex-container" id="menu">
 			<button class="navigation_button" type="button" onclick="Home_button();play_1()"> Home </button>
 			<button class="navigation_button" type="button" onclick="Level_2_button();play_1()"> Level 2 </button>
@@ -47,22 +47,19 @@
     <img class="porte" id="p1d" style="position: absolute" src="Passages.png" width="40" height="155">
     <img class="porte" id="p2d" style="position: absolute" src="Passages.png" width="40" height="155">
     <img class="porte" id="p5" style="position: absolute" src="Passages.png" width="310.5" height="40">
-    <img class="porte" id="p6" style="position: absolute" src="Passages.png" width="350.5" height="40">-->
+    <img class="porte" id="p6" style="position: absolute" src="Passages.png" width="350.5" height="40">
 
 
     <!--<div class="bloc image" id="porte1_blocD" style="position: absolute;"></div>-->
 
-    <img id="piou" style="position: absolute" src="piou haut droit.png" width="80" height="45.5"></img>
-
-
 
     <script type="text/javascript" src="script.js"></script>
 	<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
-
-
+    <script type="text/javascript" src="JavaScripting BL.js"></script>
     <script>
-        function init(){
-        let crumb1 = document.getElementById("crumb1");
+        function init(coord){
+        const game = document.getElementById("game");
+        game.appendChild(`<img id="piou" style="position: absolute" src="${coord.facing}" width="80" height="45.5"></img>`);
         crumb1.style.left = "1089px";
         crumb1.style.top = "355px";
         let crumb2 = document.getElementById("crumb2");
@@ -122,11 +119,9 @@
         }
     </script>
 
-    <script type="text/javascript" src="JavaScripting BL.js"></script>
-
     <script
 
-    <!--<script>
+<!-- <script>
 
         // Porte 1 (1 crumb)
     
@@ -136,7 +131,7 @@
         
         animeMur('porte1_blocD', 2, true, 'topcenter');  
 
-    </script>-->
+    </script> -->
 
     </body>
 </html>

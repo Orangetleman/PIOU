@@ -1,13 +1,41 @@
-window.MovingL = false
-window.MovingR = false
-window.MovingU = false
-window.MovingD = false
-let Speed = 5
-let positionX = 60
-let positionY = 350
-let schroum = new Audio("schroum.m4a")
+const APPARRITION_POS = {
+    initpos : {x:60,y:350,facing:"piou haut droit"} ,
+    // BL page 1
+    pos1_1 : {x:1612.5,y:660,facing:"piou haut gauche"} ,
+    pos1_2 : {x:1612.5,y:815,facing:"piou haut gauche"} ,
+    pos1_3 : {x:60,y:815,facing:"piou haut nord"} ,
+    pos1_4 : {x:370.5,y:815,facing:"piou haut nord"} ,
+    // BL page 2
+    pos2_3 : {x:60,y:350,facing:"piou haut sud"} ,
+    pos2_4 : {x:370.5,y:350,facing:"piou haut sud"} ,
+    pos2_7 : {x:1612.5,y:350,facing:"piou haut gauche"} ,
+    pos2_8 : {x:1612.5,y:505,facing:"piou haut gauche"},
+    pos2_9 : {x:1612.5,y:660,facing:"piou haut gauche"},
+    pos2_10 : {x:1612.5,y:815,facing:"piou haut gauche"},
+    // BL page 3
+    pos3_1 : {x:60,y:660,facing:"piou haut droit"},
+    pos3_2 : {x:60,y:815,facing:"piou haut droit"},
+    pos3_5 : {x:681,y:815,facing:"piou haut nord"},
+    pos3_6 : {x:1612.5,y:815,facing:"piou haut nord"},
+    // BL page 4
+    pos4_5 : {x:681,y:350,facing:"piou haut sud"},
+    pos4_6 : {x:1612.5,y:350,facing:"piou haut sud"},
+    pos4_7 : {x:60,y:350,facing:"piou haut droit"},
+    pos4_8 : {x:60,y:505,facing:"piou haut droit"},
+    pos4_9 : {x:60,y:660,facing:"piou haut droit"},
+    pos4_10 : {x:60,y:815,facing:"piou haut droit"}
+}
+
+window.MovingL = false;
+window.MovingR = false;
+window.MovingU = false;
+window.MovingD = false;
+let Speed = 5;
+let schroum = new Audio("schroum.m4a");
 let dim_piou = { width: 536/5*0.75, height: 305/5*0.75 };
-let crumb1removed = false
+let positionX = APPARRITION_POS.initpos.x;
+let positionY = APPARRITION_POS.initpos.y;
+let crumb1removed = false;
 
 // --- Déclaration des compteurs de crumbs mangés derrière chaque mur ---
 const crumbsMangesParMur = {
@@ -21,14 +49,9 @@ const crumbsMangesParMur = {
     porte3: 0
 };
 
-let tp1 = false
-
 function update() {
-    if (tp1 == true) {
-                positionX = 600
-                positionY = 500
-            }
 	let piou = document.getElementById("piou")
+    console.log(piou)
 	let piouDim = piou.getBoundingClientRect();
 	let NouvPiouDim = { left: piouDim.left, top:piouDim.top, right:piouDim.right, bottom:piouDim.bottom, width: piouDim.width, height: piouDim.height }; 
     let a = 100
@@ -83,122 +106,156 @@ function update() {
 	});
 
 
-    if (document.getElementById("p1")) {
-        let p1Dim = p1.getBoundingClientRect();
-        if (isIntersecting(p1Dim, NouvPiouDim)) {
-            console.log("p1");
-            tp1 = true
-            Page_3()
-        }
-    }
-
-
-    if (document.getElementById("p2")) {
-        let p2Dim = p2.getBoundingClientRect();
-        if (isIntersecting(p2Dim, NouvPiouDim)) {
-            console.log("p2");
-            Page_3()
-        }
-    }
-
-
-    if (document.getElementById("p3")) {
-        let p3Dim = p3.getBoundingClientRect();
-        if (isIntersecting(p3Dim, NouvPiouDim)) {
-            console.log("p3");
-            Page_2()
-        }
-    }
-
-    if (document.getElementById("p4")) {
-        let p4Dim = p4.getBoundingClientRect();
-        if (isIntersecting(p4Dim, NouvPiouDim)) {
-            console.log("p4");
-            Page_2()
-        }
-    }
-
-    
-    if (document.getElementById("p3b")) {
-        let p3bDim = p3b.getBoundingClientRect();
-        if (isIntersecting(p3bDim, NouvPiouDim)) {
-            console.log("p3b");
-            Page_1()
-        }
-    }
+    // VERS LA PAGE 1
     if (document.getElementById("p1d")) {
         let p1dDim = p1d.getBoundingClientRect();
         if (isIntersecting(p1dDim, NouvPiouDim)) {
             console.log("p1d");
-            Page_1()
+            Page_1("BL page1.js",1)
         }
     }
     if (document.getElementById("p2d")) {
         let p2dDim = p2d.getBoundingClientRect();
         if (isIntersecting(p2dDim, NouvPiouDim)) {
             console.log("p2d");
-            Page_1()
+            Page_1("BL page1.js",2)
         }
     }
-    if (document.getElementById("p5")) {
-        let p5Dim = p5.getBoundingClientRect();
-        if (isIntersecting(p5Dim, NouvPiouDim)) {
-            console.log("p5");
-            Page_4()
+    if (document.getElementById("p3b")) {
+        let p3bDim = p3b.getBoundingClientRect();
+        if (isIntersecting(p3bDim, NouvPiouDim)) {
+            console.log("p3b");
+            Page_1("BL page1.js",3)
         }
     }
-    if (document.getElementById("p6")) {
-        let p6Dim = p6.getBoundingClientRect();
-        if (isIntersecting(p6Dim, NouvPiouDim)) {
-            console.log("p6");
-            Page_4()
+    if (document.getElementById("p4b")) {
+        let p3bDim = p3b.getBoundingClientRect();
+        if (isIntersecting(p3bDim, NouvPiouDim)) {
+            console.log("p4b");
+            Page_1("BL page1.js",4)
         }
     }
 
-    if (document.getElementById("p5b")) {
-        let p5bDim = p5b.getBoundingClientRect();
-        if (isIntersecting(p5bDim, NouvPiouDim)) {
-            console.log("p5b");
-            Page_3()
+    // VERS LA PAGE 2
+    if (document.getElementById("p3")) {
+        let p3Dim = p3.getBoundingClientRect();
+        if (isIntersecting(p3Dim, NouvPiouDim)) {
+            console.log("p3");
+            Page_2("BL page2.js",3)
         }
     }
-    if (document.getElementById("p6b")) {
-        let p6bDim = p6b.getBoundingClientRect();
-        if (isIntersecting(p6bDim, NouvPiouDim)) {
-            console.log("p6b");
-            Page_3()
+    if (document.getElementById("p4")) {
+        let p4Dim = p4.getBoundingClientRect();
+        if (isIntersecting(p4Dim, NouvPiouDim)) {
+            console.log("p4");
+            Page_2("BL page2.js",4)
         }
     }
     if (document.getElementById("p7d")) {
         let p7dDim = p7d.getBoundingClientRect();
         if (isIntersecting(p7dDim, NouvPiouDim)) {
             console.log("p7d");
-            Page_2()
+            Page_2("BL page2.js",7)
         }
     }
     if (document.getElementById("p8d")) {
         let p8dDim = p8d.getBoundingClientRect();
         if (isIntersecting(p8dDim, NouvPiouDim)) {
             console.log("p8d");
-            Page_2()
+            Page_2("BL page2.js",8)
         }
     }
     if (document.getElementById("p9d")) {
         let p9dDim = p9d.getBoundingClientRect();
         if (isIntersecting(p9dDim, NouvPiouDim)) {
             console.log("p9d");
-            Page_2()
+            Page_2("BL page2.js",9)
         }
     }   
     if (document.getElementById("p10d")) {
         let p10dDim = p10d.getBoundingClientRect();
         if (isIntersecting(p10dDim, NouvPiouDim)) {
             console.log("p10d");
-            Page_2()
+            Page_2("BL page2.js",10)
         }
     }
-	
-	/*if (document.getElementById("porte1")) {
+
+    // VERS LA PAGE 3
+    if (document.getElementById("p1")) {
+        let p1Dim = p1.getBoundingClientRect();
+        if (isIntersecting(p1Dim, NouvPiouDim)) {
+            console.log("p1");
+            tp1 = true
+            Page_3("BL page3.js",1)
+        }
+    }
+    if (document.getElementById("p2")) {
+        let p2Dim = p2.getBoundingClientRect();
+        if (isIntersecting(p2Dim, NouvPiouDim)) {
+            console.log("p2");
+            Page_3("BL page3.js",2)
+        }
+    }
+    if (document.getElementById("p5b")) {
+        let p5bDim = p5b.getBoundingClientRect();
+        if (isIntersecting(p5bDim, NouvPiouDim)) {
+            console.log("p5b");
+            Page_3("BL page3.js",5)
+        }
+    }
+    if (document.getElementById("p6b")) {
+        let p6bDim = p6b.getBoundingClientRect();
+        if (isIntersecting(p6bDim, NouvPiouDim)) {
+            console.log("p6b");
+            Page_3("BL page3.js",6)
+        }
+    }
+
+    // VERS LA PAGE 4
+    if (document.getElementById("p5")) {
+        let p5Dim = p5.getBoundingClientRect();
+        if (isIntersecting(p5Dim, NouvPiouDim)) {
+            console.log("p5");
+            Page_4("BL page4.js",5)
+        }
+    }
+    if (document.getElementById("p6")) {
+        let p6Dim = p6.getBoundingClientRect();
+        if (isIntersecting(p6Dim, NouvPiouDim)) {
+            console.log("p6");
+            Page_4("BL page4.js",6)
+        }
+    }
+    if (document.getElementById("p7g")) {
+        let p6Dim = p6.getBoundingClientRect();
+        if (isIntersecting(p6Dim, NouvPiouDim)) {
+            console.log("p7g");
+            Page_4("BL page4.js",7)
+        }
+    }
+    if (document.getElementById("p8g")) {
+        let p6Dim = p6.getBoundingClientRect();
+        if (isIntersecting(p6Dim, NouvPiouDim)) {
+            console.log("p8g");
+            Page_4("BL page4.js",8)
+        }
+    }
+    if (document.getElementById("p9g")) {
+        let p6Dim = p6.getBoundingClientRect();
+        if (isIntersecting(p6Dim, NouvPiouDim)) {
+            console.log("p9g");
+            Page_4("BL page4.js",9)
+        }
+    }
+    if (document.getElementById("p10g")) {
+        let p6Dim = p6.getBoundingClientRect();
+        if (isIntersecting(p6Dim, NouvPiouDim)) {
+            console.log("p10g");
+            Page_4("BL page4.js",10)
+        }
+    }
+
+    /*if (document.getElementById("porte1")) {
         let porte1Dim = porte1.getBoundingClientRect();
         if (isIntersecting(porte1Dim, NouvPiouDim)) {
             console.log("porte1");
@@ -406,14 +463,65 @@ function removeImage(img) {
 	img.remove();
 }
 
-init();
-
 update();
 
 function isIntersecting(rect1, rect2) {
 	return (rect1.left < rect2.right && rect1.right > rect2.left && rect1.top < rect2.bottom && rect1.bottom > rect2.top);
 }
-
+function defPos(page, enterNb) {
+    if (page === "BL page1.js") {
+        if (enterNb === 1) {
+            return APPARRITION_POS.pos1_1
+        } else if (enterNb === 2 ) {
+            return APPARRITION_POS.pos1_2
+        } else if (enterNb === 3 ) {
+            return APPARRITION_POS.pos1_3
+        } else if (enterNb === 4 ) {
+            return APPARRITION_POS.pos1_4
+        }
+    }
+    if (page === "BL page2.js") {
+        if (enterNb === 3 ) {
+            return APPARRITION_POS.pos2_3
+        } else if (enterNb === 4 ) {
+            return APPARRITION_POS.pos2_4
+        } else if (enterNb === 7 ) {
+            return APPARRITION_POS.pos2_7
+        } else if (enterNb === 8 ) {
+            return APPARRITION_POS.pos2_8
+        } else if (enterNb === 9 ) {
+            return APPARRITION_POS.pos2_9
+        } else if (enterNb === 10 ) {
+            return APPARRITION_POS.pos2_10
+        }
+    }
+    if (page === "BL page3.js") {
+        if (enterNb === 1 ) {
+            return APPARRITION_POS.pos3_1
+        } else if (enterNb === 2 ) {
+            return APPARRITION_POS.pos3_2
+        } else if (enterNb === 5 ) {
+            return APPARRITION_POS.pos3_5
+        } else if (enterNb === 6 ) {
+            return APPARRITION_POS.pos3_6
+        }
+    }
+    if (page === "BL page4.js") {
+        if (enterNb === 5 ) {
+            return APPARRITION_POS.pos4_5
+        } else if (enterNb === 6 ) {
+            return APPARRITION_POS.pos4_6
+        } else if (enterNb === 7 ) {
+            return APPARRITION_POS.pos4_7
+        } else if (enterNb === 8 ) {
+            return APPARRITION_POS.pos4_8
+        } else if (enterNb === 9 ) {
+            return APPARRITION_POS.pos4_9
+        } else if (enterNb === 10 ) {
+            return APPARRITION_POS.pos4_10
+        }
+    }
+};
 function Home() {
     location.replace("Home.html")
 }
@@ -423,16 +531,20 @@ function Level_2() {
 function Level_3() {
     location.replace("Level 3.html")
 }
-function Page_1() {
+function Page_1(page, enterNb) {
+    coord = defPos(page,enterNb)
     location.replace("BL page1.html")
 }
-function Page_2() {
+function Page_2(page, enterNb) {
+    coord = defPos(page,enterNb)
     location.replace("BL page2.html")
 }
-function Page_3() {
+function Page_3(page, enterNb) {
+    coord = defPos(page,enterNb)
     location.replace("BL page3.html")
 }
-function Page_4() {
+function Page_4(page, enterNb) {
+    coord = defPos(page,enterNb)
     location.replace("BL page4.html")
 }
 

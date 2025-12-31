@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="CssFDG.css"/>
         <link rel="stylesheet" href="style_level_map.css"/>
     </head>
-    <body>
+    <body id="game">
         <div class="flex-container" id="menu">
 			<button class="navigation_button" type="button" onclick="Home_button();play_1()"> Home </button>
 			<button class="navigation_button" type="button" onclick="Level_2_button();play_1()"> Level 2 </button>
@@ -55,16 +55,13 @@
 
     <!--<div class="bloc image" id="porte1_blocD" style="position: absolute;"></div>-->
 
-    <img id="piou" style="position: absolute" src="piou haut droit.png" width="80" height="45.5"></img>
-
-
-
     <script type="text/javascript" src="script.js"></script>
 	<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
-
-
+    <script type="text/javascript" src="JavaScripting BL.js"></script>
     <script>
-        function init(){
+        function init(coord){
+        const game = document.getElementById("game");
+        game.appendChild(`<img id="piou" style="position: absolute" src="${coord.facing}" width="80" height="45.5"></img>`);
         let crumb1 = document.getElementById("crumb1");
         crumb1.style.left = "1089.5px";
         crumb1.style.top = "812px";
@@ -130,8 +127,6 @@
         p10.style.top = "742px";
         }
     </script>
-
-    <script type="text/javascript" src="JavaScripting BL.js"></script>
 
     <!--<script>
 
