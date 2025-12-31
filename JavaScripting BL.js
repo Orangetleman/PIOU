@@ -33,8 +33,8 @@ window.MovingD = false;
 let Speed = 5;
 let schroum = new Audio("schroum.m4a");
 let dim_piou = { width: 536/5*0.75, height: 305/5*0.75 };
-let positionX = APPARRITION_POS.initpos.x;
-let positionY = APPARRITION_POS.initpos.y;
+let positionX = 60; // Valeur par défaut, sera écrasée par init()
+let positionY = 350;
 let crumb1removed = false;
 
 // --- Déclaration des compteurs de crumbs mangés derrière chaque mur ---
@@ -51,7 +51,6 @@ const crumbsMangesParMur = {
 
 function update() {
 	let piou = document.getElementById("piou")
-    console.log(piou)
 	let piouDim = piou.getBoundingClientRect();
 	let NouvPiouDim = { left: piouDim.left, top:piouDim.top, right:piouDim.right, bottom:piouDim.bottom, width: piouDim.width, height: piouDim.height }; 
     let a = 100
@@ -463,7 +462,7 @@ function removeImage(img) {
 	img.remove();
 }
 
-update();
+// Ne rien mettre ici ! update() sera appelé par chaque page HTML après init()
 
 function isIntersecting(rect1, rect2) {
 	return (rect1.left < rect2.right && rect1.right > rect2.left && rect1.top < rect2.bottom && rect1.bottom > rect2.top);
@@ -532,22 +531,25 @@ function Level_3() {
     location.replace("Level 3.html")
 }
 function Page_1(page, enterNb) {
-    coord = defPos(page,enterNb)
-    location.replace("BL page1.html")
+    const coord = defPos(page, enterNb);
+    sessionStorage.setItem('piouCoord', JSON.stringify(coord));
+    location.replace("BL page1.html");
 }
 function Page_2(page, enterNb) {
-    coord = defPos(page,enterNb)
-    location.replace("BL page2.html")
+    const coord = defPos(page, enterNb);
+    sessionStorage.setItem('piouCoord', JSON.stringify(coord));
+    location.replace("BL page2.html");
 }
 function Page_3(page, enterNb) {
-    coord = defPos(page,enterNb)
-    location.replace("BL page3.html")
+    const coord = defPos(page, enterNb);
+    sessionStorage.setItem('piouCoord', JSON.stringify(coord));
+    location.replace("BL page3.html");
 }
 function Page_4(page, enterNb) {
-    coord = defPos(page,enterNb)
-    location.replace("BL page4.html")
+    const coord = defPos(page, enterNb);
+    sessionStorage.setItem('piouCoord', JSON.stringify(coord));
+    location.replace("BL page4.html");
 }
-
 function getMurFromCrumb(crumb) {
     return crumb.dataset.mur;
 }

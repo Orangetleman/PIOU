@@ -59,73 +59,96 @@
 	<script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
     <script type="text/javascript" src="JavaScripting BL.js"></script>
     <script>
-        function init(coord){
-        const game = document.getElementById("game");
-        game.appendChild(`<img id="piou" style="position: absolute" src="${coord.facing}" width="80" height="45.5"></img>`);
-        let crumb1 = document.getElementById("crumb1");
-        crumb1.style.left = "1089.5px";
-        crumb1.style.top = "812px";
-        let crumb2 = document.getElementById("crumb2");
-        crumb2.style.left = "468.5px";
-        crumb2.style.top = "660px";
-        let crumb3 = document.getElementById("crumb3");
-        crumb3.style.left = "1089.5px";
-        crumb3.style.top = "510px";
-        let m1 = document.getElementById("m1");
-        m1.style.left = "629px";
-        m1.style.top = "277px";
-        let m2 = document.getElementById("m2");
-        m2.style.left = "318.5px";
-        m2.style.top = "432px";
-        let m3 = document.getElementById("m3");
-        m3.style.left = "939.5px";
-        m3.style.top = "432px";
-        let m4 = document.getElementById("m4");
-        m4.style.left = "8px";
-        m4.style.top = "587px";
-        let m5 = document.getElementById("m5");
-        m5.style.left = "939.5px";
-        m5.style.top = "587px";
-        let m6 = document.getElementById("m6");
-        m6.style.left = "318.5px";
-        m6.style.top = "742px";
-        let m7 = document.getElementById("m7");
-        m7.style.left = "8px";
-        m7.style.top = "897px";
-        let m8 = document.getElementById("m8");
-        m8.style.left = "8px";
-        m8.style.top = "277px";
-        let m9 = document.getElementById("m9");
-        m9.style.left = "318.5px";
-        m9.style.top = "277px";
-        let m10 = document.getElementById("m10");
-        m10.style.left = "629px";
-        m10.style.top = "432px";
-        let m11 = document.getElementById("m11");
-        m11.style.left = "939.5px";
-        m11.style.top = "432px";
-        let m12 = document.getElementById("m12");
-        m12.style.left = "318.5px";
-        m12.style.top = "587px";
-        let p7 = document.getElementById("p7g");
-        p7.style.left = "1871px";
-        p7.style.top = "277px";
-        let p8 = document.getElementById("p8g");
-        p8.style.left = "1871px";
-        p8.style.top = "432px";
-        let p3b = document.getElementById("p3b");
-        p3b.style.left = "88px";
-        p3b.style.top = "277px";
-        let p4 = document.getElementById("p4b");
-        p4.style.left = "318.5px";
-        p4.style.top = "277px";
-        let p9 = document.getElementById("p9g");
-        p9.style.left = "1871px";
-        p9.style.top = "587px";
-        let p10 = document.getElementById("p10g");
-        p10.style.left = "1871px";
-        p10.style.top = "742px";
+        // Récupérer les coordonnées sauvegardées ou utiliser la position par défaut
+        const savedCoord = sessionStorage.getItem('piouCoord');
+        const coord = savedCoord ? JSON.parse(savedCoord) : {x: 60, y: 350, facing: "piou haut droit.png"};
+        
+        function init() {
+            // Créer Piou correctement dans le DOM
+            const game = document.getElementById("game");
+            const piou = document.createElement("img");
+            piou.id = "piou";
+            piou.src = coord.facing;
+            piou.style.position = "absolute";
+            piou.style.left = coord.x + "px";
+            piou.style.top = coord.y + "px";
+            piou.style.width = "80px";
+            piou.style.height = "45.5px";
+            game.appendChild(piou);
+            
+            // Mettre à jour les positions globales
+            window.positionX = coord.x;
+            window.positionY = coord.y;
+            
+            // Initialiser les éléments du niveau
+            let crumb1 = document.getElementById("crumb1");
+            crumb1.style.left = "1089.5px";
+            crumb1.style.top = "812px";
+            let crumb2 = document.getElementById("crumb2");
+            crumb2.style.left = "468.5px";
+            crumb2.style.top = "660px";
+            let crumb3 = document.getElementById("crumb3");
+            crumb3.style.left = "1089.5px";
+            crumb3.style.top = "510px";
+            let m1 = document.getElementById("m1");
+            m1.style.left = "629px";
+            m1.style.top = "277px";
+            let m2 = document.getElementById("m2");
+            m2.style.left = "318.5px";
+            m2.style.top = "432px";
+            let m3 = document.getElementById("m3");
+            m3.style.left = "939.5px";
+            m3.style.top = "432px";
+            let m4 = document.getElementById("m4");
+            m4.style.left = "8px";
+            m4.style.top = "587px";
+            let m5 = document.getElementById("m5");
+            m5.style.left = "939.5px";
+            m5.style.top = "587px";
+            let m6 = document.getElementById("m6");
+            m6.style.left = "318.5px";
+            m6.style.top = "742px";
+            let m7 = document.getElementById("m7");
+            m7.style.left = "8px";
+            m7.style.top = "897px";
+            let m8 = document.getElementById("m8");
+            m8.style.left = "8px";
+            m8.style.top = "277px";
+            let m9 = document.getElementById("m9");
+            m9.style.left = "318.5px";
+            m9.style.top = "277px";
+            let m10 = document.getElementById("m10");
+            m10.style.left = "629px";
+            m10.style.top = "432px";
+            let m11 = document.getElementById("m11");
+            m11.style.left = "939.5px";
+            m11.style.top = "432px";
+            let m12 = document.getElementById("m12");
+            m12.style.left = "318.5px";
+            m12.style.top = "587px";
+            let p7 = document.getElementById("p7g");
+            p7.style.left = "1871px";
+            p7.style.top = "277px";
+            let p8 = document.getElementById("p8g");
+            p8.style.left = "1871px";
+            p8.style.top = "432px";
+            let p3b = document.getElementById("p3b");
+            p3b.style.left = "88px";
+            p3b.style.top = "277px";
+            let p4 = document.getElementById("p4b");
+            p4.style.left = "318.5px";
+            p4.style.top = "277px";
+            let p9 = document.getElementById("p9g");
+            p9.style.left = "1871px";
+            p9.style.top = "587px";
+            let p10 = document.getElementById("p10g");
+            p10.style.left = "1871px";
+            p10.style.top = "742px";
         }
+        // Appeler init() pour lancer le niveau
+        init();
+        // Lancer la boucle de jeu APRÈS que Piou soit créé
+        update();
     </script>
 
     <!--<script>
